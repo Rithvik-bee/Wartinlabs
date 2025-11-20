@@ -379,17 +379,18 @@ export default function Hero() {
             }}
           >
             {/* Frame 1707481449 - Get Started Free Button */}
-            {/* Figma: Width Hug 330px, Height Hug 60px, Prism Colors, stars-01 (24px), Solid (22px at 1px,1px) */}
+            {/* Figma: Width Fixed 330px, Height Hug 60px, Prism Colors, stars-01 (24px), Solid (22px at 1px,1px) */}
             {/* Width: 330px / 1920px = 17.19vw, max 330px (Figma exact) */}
             {/* Height: 60px / 1920px = 3.13vw, max 60px (Figma exact) */}
             <div className="w-full sm:w-auto" style={{ width: '100%', maxWidth: '100%', height: 'fit-content' }}>
               {/* Prism Colors - Component */}
+              {/* Figma: Flow Vertical, Width Fixed 330px, Height Hug 60px, Radius 16px, Padding 2px, Gap 10px, Angular Gradient */}
               <div 
                 className="prism-gradient flex flex-col rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                 style={{ 
                   width: 'clamp(200px, 17.19vw, 330px)',
                   maxWidth: '330px',
-                  minWidth: 0,
+                  minWidth: '200px',
                   height: 'clamp(40px, 3.13vw, 60px)',
                   minHeight: 'clamp(40px, 3.13vw, 60px)',
                   borderRadius: '16px',
@@ -399,6 +400,11 @@ export default function Hero() {
                 }}
               >
                 {/* Frame "1" - Inside Prism Colors */}
+                {/* Figma: Flow Horizontal, Width Fill 326px (330px - 4px padding), Height Hug 56px, Radius 16px, Padding Top 16px Right 32px Bottom 16px Left 32px, Gap 16px, Background #16062C, Background blur 30 */}
+                {/* Width: 326px / 1920px = 16.98vw, max 326px (Figma exact) */}
+                {/* Height: 56px / 1920px = 2.92vw, max 56px (Figma exact) */}
+                {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
+                {/* Padding Top/Bottom: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}
                 <button 
                   type="button"
                   onClick={(e) => {
@@ -408,13 +414,15 @@ export default function Hero() {
                   }}
                   className="flex items-center justify-center rounded-2xl cursor-pointer w-full transition-all duration-300 hover:bg-[#1a0a3e] active:scale-95"
                   style={{ 
-                    width: '100%',
+                    width: 'calc(100% - 4px)',
+                    maxWidth: '326px',
                     height: 'fit-content',
+                    minHeight: 'clamp(36px, 2.92vw, 56px)',
                     borderRadius: '16px',
-                    paddingTop: 'clamp(10px, 0.83vw, 16px)',
-                    paddingRight: 'clamp(16px, 1.67vw, 32px)',
-                    paddingBottom: 'clamp(10px, 0.83vw, 16px)',
-                    paddingLeft: 'clamp(16px, 1.67vw, 32px)',
+                    paddingTop: 'clamp(8px, 0.83vw, 16px)',
+                    paddingRight: 'clamp(12px, 1.67vw, 32px)',
+                    paddingBottom: 'clamp(8px, 0.83vw, 16px)',
+                    paddingLeft: 'clamp(12px, 1.67vw, 32px)',
                     gap: 'clamp(8px, 0.83vw, 16px)',
                     backgroundColor: '#16062C',
                     backdropFilter: 'blur(30px)',
@@ -425,29 +433,28 @@ export default function Hero() {
                   {/* stars-01 - Component */}
                   {/* Figma: 24px × 24px, Solid: 22px × 22px at 1px, 1px */}
                   {/* Container: 24px / 1920px = 1.25vw, max 24px (Figma exact) */}
-                  {/* SVG: 22px / 1920px = 1.15vw, max 22px (Figma exact) */}
+                  {/* Image: 22px / 1920px = 1.15vw, max 22px (Figma exact) */}
                   {/* Position: 1px / 1920px = 0.052vw, max 1px (Figma exact) */}
                   <div style={{ 
                     width: 'clamp(16px, 1.25vw, 24px)', 
                     height: 'clamp(16px, 1.25vw, 24px)', 
                     flexShrink: 0, 
-                    position: 'relative' 
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}>
-                    {/* Solid - Inside stars-01 */}
-                    <svg 
-                      width="clamp(18px, 1.15vw, 22px)"
-                      height="clamp(18px, 1.15vw, 22px)"
-                      viewBox="0 0 22 22" 
-                      fill="none" 
-                      xmlns="http://www.w3.org/2000/svg"
+                    {/* stars-01.png image - Inside stars-01 container */}
+                    <img
+                      src="/stars-01.png"
+                      alt="Star icon"
                       style={{
-                        position: 'absolute',
-                        top: 'clamp(0.5px, 0.052vw, 1px)',
-                        left: 'clamp(0.5px, 0.052vw, 1px)'
+                        width: 'clamp(18px, 1.15vw, 22px)',
+                        height: 'clamp(18px, 1.15vw, 22px)',
+                        objectFit: 'contain',
+                        display: 'block'
                       }}
-                    >
-                      <path d="M11 0L13.5 8.5L22 11L13.5 13.5L11 22L8.5 13.5L0 11L8.5 8.5L11 0Z" fill="#FFFFFF"/>
-                    </svg>
+                    />
                   </div>
                   {/* Text "Get Started Free" */}
                   {/* Font: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}

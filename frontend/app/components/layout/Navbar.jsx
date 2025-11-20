@@ -272,8 +272,9 @@ export default function Navbar() {
                 </Link>
               </div>
               {/* Frame 1707481449 - Sign up */}
-              {/* Figma: Width Hug 330px, Height Hug 60px */}
+              {/* Figma: Width Fixed 330px, Height Hug 60px */}
               {/* Scales proportionally: 330px / 1920px = 17.19vw, max 330px (Figma exact) */}
+              {/* Height: 60px / 1920px = 3.13vw, max 60px (Figma exact) */}
               <Link href="/register" className="hidden lg:block transition-all duration-300 hover:scale-105" style={{ width: 'fit-content', height: 'fit-content' }}>
                 {/* Prism Colors - Component */}
                 {/* Figma: Flow Vertical, Width Fixed 330px, Height Hug 60px, Radius 16px, Padding 2px, Gap 10px, Angular Gradient */}
@@ -281,7 +282,10 @@ export default function Navbar() {
                   className="prism-gradient flex flex-col rounded-2xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                   style={{ 
                     width: 'clamp(200px, 17.19vw, 330px)',
-                    height: 'fit-content',
+                    maxWidth: '330px',
+                    minWidth: '200px',
+                    height: 'clamp(40px, 3.13vw, 60px)',
+                    minHeight: 'clamp(40px, 3.13vw, 60px)',
                     borderRadius: '16px',
                     padding: '2px',
                     gap: '10px',
@@ -289,31 +293,38 @@ export default function Navbar() {
                   }}
                 >
                   {/* Frame "1" - Inside Prism Colors */}
-                  {/* Figma: Flow Horizontal, Width Fill 326px, Height Hug 56px, Radius 16px, Padding Top 16px Right 32px Bottom 16px Left 32px, Gap 16px, Background #16062C, Background blur 30 */}
+                  {/* Figma: Flow Horizontal, Width Fill 326px (330px - 4px padding), Height Hug 56px, Radius 16px, Padding Top 16px Right 32px Bottom 16px Left 32px, Gap 16px, Background #16062C, Background blur 30 */}
+                  {/* Width: 326px / 1920px = 16.98vw, max 326px (Figma exact) */}
+                  {/* Height: 56px / 1920px = 2.92vw, max 56px (Figma exact) */}
                   {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
                   {/* Padding Top/Bottom: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}
                   <div 
                     className="flex items-center justify-center rounded-2xl cursor-pointer transition-all duration-300 hover:bg-[#1a0a3e] active:scale-95"
                     style={{ 
                       width: 'calc(100% - 4px)',
+                      maxWidth: '326px',
                       height: 'fit-content',
+                      minHeight: 'clamp(36px, 2.92vw, 56px)',
                       borderRadius: '16px',
                       paddingTop: 'clamp(8px, 0.83vw, 16px)',
                       paddingRight: 'clamp(12px, 1.67vw, 32px)',
                       paddingBottom: 'clamp(8px, 0.83vw, 16px)',
                       paddingLeft: 'clamp(12px, 1.67vw, 32px)',
+                      gap: 'clamp(8px, 0.83vw, 16px)',
                       backgroundColor: '#16062C',
                       backdropFilter: 'blur(30px)'
                     }}
                   >
                     {/* Text "Sign up" - Inside Frame "1" */}
-                    {/* Figma: Width 61px, Height 24px, Font Poppins, Weight 500, Size 16px, Line height 150%, Letter spacing 0px, Color #FFFFFF, Center aligned */}
+                    {/* Figma: Width 61px (Hug), Height 24px, Font Poppins, Weight 500, Size 16px, Line height 150%, Letter spacing 0px, Color #FFFFFF, Center aligned */}
+                    {/* Width: 61px / 1920px = 3.18vw, max 61px (Figma exact) */}
+                    {/* Height: 24px / 1920px = 1.25vw, max 24px (Figma exact) */}
                     {/* Font: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}
                     <span 
                       className="text-white whitespace-nowrap"
                       style={{ 
-                        width: '61px',
-                        height: '24px',
+                        width: 'clamp(45px, 3.18vw, 61px)',
+                        height: 'clamp(18px, 1.25vw, 24px)',
                         fontFamily: 'Poppins, sans-serif',
                         fontWeight: 500,
                         fontSize: 'clamp(12px, 0.83vw, 16px)',
