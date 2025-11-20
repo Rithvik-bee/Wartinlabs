@@ -99,6 +99,36 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col overflow-x-hidden">
+      <style jsx>{`
+        /* Responsive adjustments for different laptop sizes */
+        @media (min-width: 1024px) and (max-width: 1280px) {
+          /* 11" - 13" laptops */
+          .hero-content {
+            width: clamp(70%, 75vw, 876px) !important;
+          }
+          .macbook-image {
+            width: clamp(350px, 40vw, 800px) !important;
+          }
+        }
+        @media (min-width: 1281px) and (max-width: 1440px) {
+          /* 14" - 15" laptops */
+          .hero-content {
+            width: clamp(80%, 85vw, 876px) !important;
+          }
+          .macbook-image {
+            width: clamp(450px, 42vw, 950px) !important;
+          }
+        }
+        @media (min-width: 1441px) {
+          /* 16" laptops and larger */
+          .hero-content {
+            width: 876px !important;
+          }
+          .macbook-image {
+            width: clamp(800px, min(45vw, 1087px), 1087px) !important;
+          }
+        }
+      `}</style>
       {/* Background Gradient Image - direct, no modifications */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -116,16 +146,23 @@ export default function Hero() {
       </div>
 
       {/* Frame 1707481559 - Left Column Text Content */}
+      {/* Figma: Width Fixed 876px, Height Hug 447px, Top: 329px, Left: 96px, Gap: 24px */}
       <div 
-        className="relative z-10 flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24"
+        className="hero-content relative z-10 flex flex-col px-4 sm:px-6 md:px-8 lg:px-0"
         style={{
-          marginTop: 'clamp(120px, 15vh, 200px)',
-          marginBottom: 'clamp(40px, 8vh, 80px)',
-          gap: 'clamp(16px, 2vw, 24px)',
-          maxWidth: '100%'
+          width: 'clamp(85%, min(90vw, 876px), 876px)',
+          maxWidth: '876px',
+          height: 'fit-content',
+          top: 'clamp(140px, 20vh, 329px)',
+          left: 'clamp(16px, 4vw, 96px)',
+          gap: 'clamp(16px, 1.8vw, 24px)',
+          position: 'absolute',
+          padding: 0,
+          margin: 0
         }}
       >
           {/* Text: Professional Contract Intelligence for Modern Buyer's Agent */}
+          {/* Figma: 876px × 303px, Poppins 600, 72px, 140% line-height */}
           <h1 
             className="text-white leading-tight"
             style={{
@@ -134,7 +171,7 @@ export default function Hero() {
               height: 'fit-content',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 600,
-              fontSize: 'clamp(32px, 6vw, 72px)',
+              fontSize: 'clamp(28px, 4.5vw, 72px)',
               lineHeight: '140%',
               letterSpacing: '0px',
               color: '#FFFFFF',
@@ -146,6 +183,7 @@ export default function Hero() {
           </h1>
           
           {/* Text: Powered by AI. Backed by people. */}
+          {/* Figma: 405px × 36px, Poppins 500, 24px, 150% line-height, #E5E5E5 */}
           <p 
             className="text-white"
             style={{
@@ -154,29 +192,31 @@ export default function Hero() {
               height: 'fit-content',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 500,
-              fontSize: 'clamp(18px, 2.5vw, 24px)',
+              fontSize: 'clamp(16px, 2vw, 24px)',
               lineHeight: '150%',
               letterSpacing: '0px',
               color: '#E5E5E5',
               textAlign: 'left',
               margin: 0,
-              padding: 0,
-              marginTop: 'clamp(8px, 1vh, 16px)'
+              padding: 0
             }}
           >
             Powered by AI. Backed by people.
           </p>
           
           {/* Frame 1707481560 - CTA Buttons Container */}
+          {/* Figma: Flow Horizontal, Width Hug 491px, Height Hug 60px, Gap: 24px */}
           <div 
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 mt-4 sm:mt-6"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center"
             style={{
               width: '100%',
               maxWidth: '491px',
-              height: 'fit-content'
+              height: 'fit-content',
+              gap: 'clamp(16px, 2vw, 24px)'
             }}
           >
             {/* Frame 1707481449 - Get Started Free Button */}
+            {/* Figma: Width Hug 330px, Height Hug 60px, Prism Colors, stars-01 (24px), Solid (22px at 1px,1px) */}
             <div className="w-full sm:w-auto" style={{ width: '100%', maxWidth: '330px', height: 'fit-content' }}>
               {/* Prism Colors - Component */}
               <div 
@@ -184,6 +224,7 @@ export default function Hero() {
                 style={{ 
                   width: '100%',
                   maxWidth: '330px',
+                  minWidth: 'clamp(250px, 80%, 280px)',
                   height: 'fit-content',
                   borderRadius: '16px',
                   padding: '2px',
@@ -254,15 +295,16 @@ export default function Hero() {
             </div>
             
             {/* Text: See How It Works */}
+            {/* Figma: 137px × 24px, #4B024F, Poppins 500, 16px */}
             <button 
               className="rounded-lg transition-all duration-300 w-full sm:w-auto text-center sm:text-left hover:opacity-80 hover:scale-105 active:scale-95"
               style={{
                 width: '100%',
                 maxWidth: '137px',
-                height: 'fit-content',
+                height: '24px',
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: 500,
-                fontSize: 'clamp(14px, 1.5vw, 16px)',
+                fontSize: 'clamp(14px, 1.4vw, 16px)',
                 lineHeight: '150%',
                 letterSpacing: '0px',
                 color: '#4B024F',
@@ -273,7 +315,7 @@ export default function Hero() {
                 backgroundColor: 'transparent',
                 border: 'none',
                 outline: 'none',
-                padding: 'clamp(10px, 1.5vh, 12px) 0',
+                padding: 0,
                 textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
@@ -284,20 +326,28 @@ export default function Hero() {
           </div>
       </div>
 
-      {/* Macbook - Desktop version - Responsive positioning */}
+      {/* Macbook - Desktop version - Responsive positioning for all laptop sizes */}
+      {/* Figma: Width 1,086.84px, Height 657px, Top 254px, Left 940px */}
+      {/* Responsive for: 11", 12", 13", 14", 15", 16" laptops */}
       <div 
-        className="hidden lg:block absolute z-10 right-0"
+        className="macbook-image hidden lg:block absolute z-10"
         style={{
-          top: 'clamp(200px, 20vh, 254px)',
-          right: 'clamp(20px, 5vw, 96px)',
-          width: 'clamp(400px, 45vw, 600px)',
-          maxWidth: '600px'
+          top: 'clamp(180px, 16vh, 254px)',
+          right: 'clamp(20px, 3vw, 96px)',
+          width: 'clamp(400px, min(45vw, 1087px), 1087px)',
+          maxWidth: '1087px',
+          height: 'auto'
         }}
       >
         <img
           src="/Macbook2 (1).png"
           alt="MacBook mockup"
           className="w-full h-auto object-contain"
+          style={{
+            maxHeight: '657px',
+            width: '100%',
+            height: 'auto'
+          }}
         />
       </div>
 
