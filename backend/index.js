@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
+import leadsRoutes from './routes/leadsRoutes.js';
 
 dotenv.config();
 
@@ -29,7 +30,9 @@ app.use(cors({
     'http://localhost:3001',
     'http://127.0.0.1:3000',
     'http://127.0.0.1:5173',
-    'http://127.0.0.1:3001'
+    'http://127.0.0.1:3001',
+    "https://wartinlabs.onrender.com",
+    "https://wartinlabs.vercel.app/"
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true,
@@ -73,6 +76,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/leads', leadsRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
