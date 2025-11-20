@@ -1,11 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from '../layout/Navbar';
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenModal = () => {
+      setIsModalOpen(true);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('openContactModal', handleOpenModal);
+      return () => {
+        window.removeEventListener('openContactModal', handleOpenModal);
+      };
+    }
+  }, []);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

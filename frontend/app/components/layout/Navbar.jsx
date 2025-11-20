@@ -320,29 +320,101 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu backdrop overlay */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md rounded-b-2xl border-t border-white/10 z-[60] mt-2 w-full shadow-2xl">
-          <ul className="px-6 py-6 space-y-4">
-            <li>
-              <a href="#pricing" onClick={() => setIsOpen(false)} className="block text-white/90 hover:text-white text-base">
+        <div 
+          className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] transition-opacity duration-300"
+          onClick={() => setIsOpen(false)}
+          style={{
+            animation: 'fadeIn 0.3s ease-out'
+          }}
+        />
+      )}
+
+      {/* Mobile menu */}
+      <div 
+        className={`lg:hidden fixed top-0 right-0 h-full w-[85%] max-w-sm bg-gradient-to-b from-[#1a0a2e] via-[#16213e] to-black backdrop-blur-xl border-l border-white/10 z-[60] shadow-2xl transform transition-transform duration-300 ease-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
+        }`}
+        style={{
+          boxShadow: '0 0 30px rgba(0, 0, 0, 0.5)'
+        }}
+      >
+        <div className="h-full flex flex-col">
+          {/* Header with close button */}
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+            <div className="flex items-center gap-3">
+              <img 
+                src="https://i0.wp.com/wartinlabs.com/wp-content/uploads/2022/02/WARTIN-LAB-AI-2-2.png?fit=117%2C87&ssl=1" 
+                alt="WartinLabs Logo" 
+                className="h-8 w-auto"
+              />
+              <span className="text-white font-semibold text-lg">WartinLabs</span>
+            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
+            >
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Menu items */}
+          <ul className="flex-1 px-6 py-6 space-y-2 overflow-y-auto">
+            <li 
+              className="transform transition-all duration-300"
+              style={{
+                animation: isOpen ? 'slideInLeft 0.3s ease-out 0.1s both' : 'none'
+              }}
+            >
+              <a 
+                href="#pricing" 
+                onClick={() => setIsOpen(false)} 
+                className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg text-base font-medium transition-all duration-200"
+              >
                 Pricing
               </a>
             </li>
-            <li>
-              <a href="#how-it-works" onClick={() => setIsOpen(false)} className="block text-white/90 hover:text-white text-base">
+            <li 
+              className="transform transition-all duration-300"
+              style={{
+                animation: isOpen ? 'slideInLeft 0.3s ease-out 0.15s both' : 'none'
+              }}
+            >
+              <a 
+                href="#how-it-works" 
+                onClick={() => setIsOpen(false)} 
+                className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg text-base font-medium transition-all duration-200"
+              >
                 How it works
               </a>
             </li>
-            <li>
-              <a href="#about" onClick={() => setIsOpen(false)} className="block text-white/90 hover:text-white text-base">
+            <li 
+              className="transform transition-all duration-300"
+              style={{
+                animation: isOpen ? 'slideInLeft 0.3s ease-out 0.2s both' : 'none'
+              }}
+            >
+              <a 
+                href="#about" 
+                onClick={() => setIsOpen(false)} 
+                className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg text-base font-medium transition-all duration-200"
+              >
                 About
               </a>
             </li>
-            <li className="pt-4 border-t border-white/10">
+            
+            <li className="pt-6 border-t border-white/10">
               {user ? (
                 <>
-                  <div className="mb-4 text-white/90 text-base font-medium">
+                  <div 
+                    className="mb-4 px-4 py-2 text-white/90 text-base font-medium"
+                    style={{
+                      animation: isOpen ? 'slideInLeft 0.3s ease-out 0.25s both' : 'none'
+                    }}
+                  >
                     {user.firstName} {user.lastName}
                   </div>
                   <button
@@ -350,17 +422,34 @@ export default function Navbar() {
                       setIsOpen(false);
                       handleLogout();
                     }}
-                    className="block w-full h-11 bg-red-600 hover:bg-red-700 text-white rounded-full text-base font-medium text-center flex items-center justify-center"
+                    className="w-full h-12 bg-red-600 hover:bg-red-700 text-white rounded-lg text-base font-medium transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                    style={{
+                      animation: isOpen ? 'slideInLeft 0.3s ease-out 0.3s both' : 'none'
+                    }}
                   >
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link href="/login" onClick={() => setIsOpen(false)} className="block w-full text-left text-white/90 hover:text-white text-base font-medium mb-4">
+                  <Link 
+                    href="/login" 
+                    onClick={() => setIsOpen(false)} 
+                    className="block w-full px-4 py-3 text-left text-white/90 hover:text-white hover:bg-white/10 rounded-lg text-base font-medium mb-4 transition-all duration-200"
+                    style={{
+                      animation: isOpen ? 'slideInLeft 0.3s ease-out 0.25s both' : 'none'
+                    }}
+                  >
                     Login
                   </Link>
-                  <Link href="/register" onClick={() => setIsOpen(false)} className="block w-full h-11 bg-gradient-to-r from-[#050515] via-[#4D00FF] to-[#B521BA] text-white rounded-full text-base font-medium text-center flex items-center justify-center">
+                  <Link 
+                    href="/register" 
+                    onClick={() => setIsOpen(false)} 
+                    className="block w-full h-12 bg-gradient-to-r from-[#050515] via-[#4D00FF] to-[#B521BA] text-white rounded-lg text-base font-medium text-center flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+                    style={{
+                      animation: isOpen ? 'slideInLeft 0.3s ease-out 0.3s both' : 'none'
+                    }}
+                  >
                     Sign up
                   </Link>
                 </>
@@ -368,7 +457,30 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-      )}
+      </div>
+
+      {/* Animation styles */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </nav>
   );
 }
