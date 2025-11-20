@@ -19,12 +19,8 @@
   }
 }
 
-/* Base reset styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Minimal global styles - complete freedom for forms and pages */
+/* Only essential base styles, no resets that interfere with styling */
 
 html, body {
   width: 100%;
@@ -48,3 +44,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* No form element resets - complete freedom to style forms and pages as needed */
+/* Tailwind's base styles and utility classes handle everything */

@@ -81,13 +81,98 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12 relative">
+      <style dangerouslySetInnerHTML={{__html: `
+        /* Form-specific styles - isolated from global CSS */
+        .register-form {
+          width: 100%;
+          display: block;
+        }
+        
+        .register-form input,
+        .register-form select {
+          box-sizing: border-box;
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+          display: block;
+        }
+        
+        /* Override browser autofill styles - ensure consistent background for all fields */
+        .register-form input:-webkit-autofill,
+        .register-form input:-webkit-autofill:hover,
+        .register-form input:-webkit-autofill:focus,
+        .register-form input:-webkit-autofill:active,
+        .register-form input:autofill,
+        .register-form input:autofill:hover,
+        .register-form input:autofill:focus,
+        .register-form input:autofill:active {
+          -webkit-box-shadow: 0 0 0 30px #f9fafb inset !important;
+          box-shadow: 0 0 0 30px #f9fafb inset !important;
+          -webkit-text-fill-color: #111827 !important;
+          color: #111827 !important;
+          background-color: #f9fafb !important;
+          background: #f9fafb !important;
+        }
+        
+        /* Ensure all inputs have consistent styling */
+        .register-form input[type="text"],
+        .register-form input[type="email"],
+        .register-form input[type="password"],
+        .register-form input[type="tel"] {
+          background-color: #f9fafb;
+        }
+        
+        .register-form input[type="text"]:focus,
+        .register-form input[type="email"]:focus,
+        .register-form input[type="password"]:focus,
+        .register-form input[type="tel"]:focus {
+          background-color: #ffffff;
+        }
+        
+        .register-form button[type="submit"] {
+          box-sizing: border-box;
+          display: flex;
+          width: 100%;
+          cursor: pointer;
+        }
+        
+        .register-form button[type="button"] {
+          box-sizing: border-box;
+          cursor: pointer;
+          background: transparent;
+          border: none;
+        }
+        
+        .register-form .relative {
+          width: 100%;
+          display: block;
+          position: relative;
+        }
+        
+        .register-form label {
+          display: block;
+          width: 100%;
+        }
+        
+        .register-form .grid {
+          width: 100%;
+          display: grid;
+        }
+        
+        .register-form input[type="checkbox"] {
+          width: auto;
+          min-width: 1.25rem;
+          height: 1.25rem;
+          cursor: pointer;
+        }
+      `}} />
       <Link href="/" className="absolute top-6 left-6 text-gray-600 hover:text-gray-900 text-sm flex items-center gap-1">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
         Back
       </Link>
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md" style={{ minWidth: 0 }}>
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <div className="mb-8 text-center">
             <div className="flex flex-col items-center justify-center mb-4">
@@ -102,7 +187,7 @@ export default function RegisterPage() {
             {/* <p className="text-gray-500 text-center text-sm">Join thousands learning data science</p> */}
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="register-form space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-2">First Name</label>
@@ -183,6 +268,7 @@ export default function RegisterPage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="you@example.com"
+                  autoComplete="email"
                   className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
                   required
                 />
@@ -211,6 +297,7 @@ export default function RegisterPage() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Minimum 8 characters"
+                  autoComplete="new-password"
                   className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
                   required
                 />
@@ -272,6 +359,7 @@ export default function RegisterPage() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Re-enter password"
+                  autoComplete="new-password"
                   className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
                   required
                 />

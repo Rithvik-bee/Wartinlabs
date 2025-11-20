@@ -19,6 +19,18 @@ export default function Hero() {
       };
     }
   }, []);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -98,7 +110,12 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-screen flex flex-col overflow-hidden">
+    // Hero Section - Figma: Width 1920px, Height 1201px
+    // Using h-screen for full viewport height, max-width 1920px matches Figma
+    <section className="relative w-full h-screen flex flex-col overflow-hidden" style={{
+      maxWidth: '1920px',
+      margin: '0 auto'
+    }}>
       <style jsx>{`
         /* Figma exact properties - scales proportionally on all screens */
         /* Base: Figma design is 1920px wide */
@@ -137,7 +154,7 @@ export default function Hero() {
           }
         }
         
-        /* MacBook wrapper - Figma: 1087px (56.67% of 1920px) */
+        /* MacBook wrapper - Figma: 1086.84px (56.647% of 1920px) */
         .macbook-wrapper {
           width: 100%;
           max-width: 100%;
@@ -146,16 +163,16 @@ export default function Hero() {
         /* Tablet and up: Proportional scaling */
         @media (min-width: 1024px) {
           .macbook-wrapper {
-            width: clamp(400px, 56.67vw, 1087px); /* 1087px / 1920px = 56.67vw */
-            max-width: 1087px; /* Figma exact */
+            width: clamp(400px, 56.647vw, 1086.84px); /* 1086.84px / 1920px = 56.647vw */
+            max-width: 1086.84px; /* Figma exact */
           }
         }
         
         /* Desktop: Exact Figma match at 1920px */
         @media (min-width: 1920px) {
           .macbook-wrapper {
-            width: 1087px;
-            max-width: 1087px;
+            width: 1086.84px;
+            max-width: 1086.84px;
           }
         }
         
@@ -163,16 +180,16 @@ export default function Hero() {
           width: 100%;
           height: auto;
           object-fit: contain;
-          max-width: 1087px; /* Figma exact */
+          max-width: 1086.84px; /* Figma exact */
           max-height: 657px; /* Figma exact */
         }
         
         /* MacBook image scales proportionally */
         @media (min-width: 1024px) {
           .macbook-wrapper img {
-            width: clamp(280px, 56.67vw, 1087px); /* 1087px / 1920px = 56.67vw */
-            height: clamp(169px, 34.22vw, 657px); /* 657px / 1920px = 34.22vw */
-            max-width: 1087px; /* Figma exact */
+            width: clamp(280px, 56.647vw, 1086.84px); /* 1086.84px / 1920px = 56.647vw */
+            height: clamp(169px, 34.27vw, 657px); /* 657px / 1920px = 34.27vw */
+            max-width: 1086.84px; /* Figma exact */
             max-height: 657px; /* Figma exact */
           }
         }
@@ -378,7 +395,12 @@ export default function Hero() {
               >
                 {/* Frame "1" - Inside Prism Colors */}
                 <button 
-                  onClick={() => setIsModalOpen(true)}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setIsModalOpen(true);
+                  }}
                   className="flex items-center justify-center rounded-2xl cursor-pointer w-full transition-all duration-300 hover:bg-[#1a0a3e] active:scale-95"
                   style={{ 
                     width: '100%',
@@ -487,19 +509,26 @@ export default function Hero() {
         </div>
 
         {/* Macbook - Desktop version - Responsive positioning for all laptop sizes */}
-        {/* Figma: Width 1,086.84px, Height 657px, Top 254px, Left 940px */}
-        {/* Scales proportionally: 1087px / 1920px = 56.67vw, max 1087px (Figma exact) */}
-        {/* Height: 657px / 1920px = 34.22vw, max 657px (Figma exact) */}
-        <div className="macbook-wrapper hidden lg:flex items-center justify-center">
+        {/* Figma: MacBook Width 1,086.84px, Height 657px, Top 254px, Left 940px */}
+        {/* Figma: Screen inside MacBook: Width 839.39px, Height 586px */}
+        {/* MacBook scales proportionally: 1086.84px / 1920px = 56.647vw, max 1086.84px (Figma exact) */}
+        {/* Height: 657px / 1920px = 34.27vw, max 657px (Figma exact) */}
+        {/* Screen inside will be: 839.39px × 586px when MacBook is at full size */}
+        {/* Using MacBook image directly - contains hero content inside */}
+        <div className="macbook-wrapper hidden lg:flex items-center justify-center" style={{
+          maxWidth: '1086.84px',
+          maxHeight: '657px'
+        }}>
           <img
-            src="/Macbook2 (1).png"
+            src="/Macbook (1).png"
             alt="MacBook mockup"
-            className="object-contain"
             style={{
-              width: 'clamp(280px, 56.67vw, 1087px)',
-              height: 'clamp(169px, 34.22vw, 657px)',
-              maxWidth: '1087px',
-              maxHeight: '657px'
+              width: 'clamp(280px, 56.647vw, 1086.84px)',
+              height: 'clamp(169px, 34.27vw, 657px)',
+              maxWidth: '1086.84px',
+              maxHeight: '657px',
+              objectFit: 'contain',
+              display: 'block'
             }}
           />
         </div>
@@ -514,7 +543,7 @@ export default function Hero() {
         }}
       >
         <img
-          src="/Macbook2 (1).png"
+          src="/Macbook (1).png"
           alt="MacBook mockup"
           className="w-[70%] max-w-[500px] h-auto"
         />
@@ -529,7 +558,7 @@ export default function Hero() {
         }}
       >
         <img
-          src="/Macbook2 (1).png"
+          src="/Macbook (1).png"
           alt="MacBook mockup"
           className="w-[85%] max-w-[350px] h-auto"
         />
@@ -546,7 +575,56 @@ export default function Hero() {
             }
           }}
         >
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div 
+            className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto" 
+            style={{ minWidth: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <style dangerouslySetInnerHTML={{__html: `
+              /* Form-specific styles - isolated from global CSS */
+              .contact-form {
+                width: 100%;
+                display: block;
+              }
+              
+              .contact-form input,
+              .contact-form textarea,
+              .contact-form select {
+                box-sizing: border-box;
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                display: block;
+              }
+              
+              .contact-form textarea {
+                min-height: 100px;
+                resize: vertical;
+              }
+              
+              .contact-form button[type="submit"] {
+                box-sizing: border-box;
+                display: flex;
+                width: 100%;
+                cursor: pointer;
+              }
+              
+              .contact-form .relative {
+                width: 100%;
+                display: block;
+                position: relative;
+              }
+              
+              .contact-form label {
+                display: block;
+                width: 100%;
+              }
+              
+              .contact-form .grid {
+                width: 100%;
+                display: grid;
+              }
+            `}} />
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-2xl">
               <div className="flex flex-col items-center justify-center">
                 <img 
@@ -584,7 +662,7 @@ export default function Hero() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="contact-form space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-2">

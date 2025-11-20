@@ -61,13 +61,41 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12 relative">
+      <style dangerouslySetInnerHTML={{__html: `
+        /* Form-specific styles - isolated from global CSS */
+        .login-form {
+          width: 100%;
+          display: block;
+        }
+        
+        .login-form input {
+          box-sizing: border-box;
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+          display: block;
+        }
+        
+        .login-form button[type="submit"] {
+          box-sizing: border-box;
+          display: flex;
+          width: 100%;
+          cursor: pointer;
+        }
+        
+        .login-form .relative {
+          width: 100%;
+          display: block;
+          position: relative;
+        }
+      `}} />
       <Link href="/" className="absolute top-6 left-6 text-gray-600 hover:text-gray-900 text-sm flex items-center gap-1">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
         Back
       </Link>
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md" style={{ minWidth: 0 }}>
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <div className="mb-8 text-center">
             <div className="flex flex-col items-center justify-center mb-4">
@@ -82,7 +110,7 @@ export default function LoginPage() {
             <p className="text-gray-500 mb-8 text-center">Login to continue </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="login-form space-y-6">
             <div className="relative">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
