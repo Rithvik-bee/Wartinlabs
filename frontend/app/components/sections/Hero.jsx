@@ -98,34 +98,152 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col overflow-x-hidden">
+    <section className="relative w-full h-screen flex flex-col overflow-hidden">
       <style jsx>{`
-        /* Simple fluid responsive - Figma properties as max values */
-        /* Using clamp() for smooth scaling - works on ANY screen size */
+        /* Figma exact properties - scales proportionally on all screens */
+        /* Base: Figma design is 1920px wide */
+        /* All sizes scale from Figma base proportionally */
+        
+        /* Content wrapper - Figma: 876px (45.625% of 1920px) */
+        /* Scales proportionally: 876px / 1920px = 45.625vw, max 876px (Figma exact) */
         .hero-content-wrapper {
-          width: clamp(280px, 48vw, 876px);
-          max-width: 876px;
+          width: 100%;
+          max-width: 100%;
         }
         
-        @media (min-width: 1024px) {
+        /* Mobile: Full width with padding */
+        @media (min-width: 375px) {
           .hero-content-wrapper {
-            width: clamp(500px, 48vw, 876px);
+            width: 100%;
+            max-width: 100%;
+            padding: 0 clamp(12px, 3vw, 24px);
           }
         }
         
-        .macbook-wrapper {
-          width: clamp(280px, 45vw, 1087px);
-          max-width: 1087px;
+        /* Tablet and up: Proportional scaling */
+        @media (min-width: 768px) {
+          .hero-content-wrapper {
+            width: clamp(400px, 45.625vw, 876px);
+            max-width: 876px;
+            padding: 0;
+          }
         }
         
+        /* Desktop: Exact Figma match at 1920px */
+        @media (min-width: 1920px) {
+          .hero-content-wrapper {
+            width: 876px;
+            max-width: 876px;
+          }
+        }
+        
+        /* MacBook wrapper - Figma: 1087px (56.67% of 1920px) */
+        .macbook-wrapper {
+          width: 100%;
+          max-width: 100%;
+        }
+        
+        /* Tablet and up: Proportional scaling */
         @media (min-width: 1024px) {
           .macbook-wrapper {
-            width: clamp(450px, 45vw, 1087px);
+            width: clamp(400px, 56.67vw, 1087px); /* 1087px / 1920px = 56.67vw */
+            max-width: 1087px; /* Figma exact */
+          }
+        }
+        
+        /* Desktop: Exact Figma match at 1920px */
+        @media (min-width: 1920px) {
+          .macbook-wrapper {
+            width: 1087px;
+            max-width: 1087px;
           }
         }
         
         .macbook-wrapper img {
-          max-height: 657px;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          max-width: 1087px; /* Figma exact */
+          max-height: 657px; /* Figma exact */
+        }
+        
+        /* MacBook image scales proportionally */
+        @media (min-width: 1024px) {
+          .macbook-wrapper img {
+            width: clamp(280px, 56.67vw, 1087px); /* 1087px / 1920px = 56.67vw */
+            height: clamp(169px, 34.22vw, 657px); /* 657px / 1920px = 34.22vw */
+            max-width: 1087px; /* Figma exact */
+            max-height: 657px; /* Figma exact */
+          }
+        }
+        
+        /* Typography - scales proportionally from Figma base */
+        .hero-content-wrapper h1 {
+          font-size: clamp(24px, 3.75vw, 72px); /* 72px / 1920px = 3.75vw */
+        }
+        
+        .hero-content-wrapper p {
+          font-size: clamp(14px, 1.25vw, 24px); /* 24px / 1920px = 1.25vw */
+        }
+        
+        /* Spacing - scales proportionally from Figma base */
+        .hero-content-wrapper {
+          gap: clamp(8px, 1.25vw, 24px); /* 24px / 1920px = 1.25vw */
+        }
+        
+        /* Left padding - Figma: 96px (5% of 1920px) */
+        .hero-container {
+          padding-left: clamp(12px, 5vw, 96px); /* 96px / 1920px = 5vw */
+          padding-right: clamp(12px, 5vw, 96px);
+        }
+        
+        /* Ensure 11"-15" laptops fit on one screen - no scrolling */
+        @media (min-width: 1024px) and (max-height: 900px) {
+          .hero-content-wrapper {
+            gap: clamp(6px, 0.8vw, 16px) !important;
+          }
+          .hero-content-wrapper h1 {
+            font-size: clamp(28px, 3.2vw, 56px) !important;
+            line-height: 130% !important;
+            margin-bottom: 4px !important;
+          }
+          .hero-content-wrapper p {
+            font-size: clamp(14px, 1.1vw, 20px) !important;
+            margin-bottom: 6px !important;
+          }
+          .macbook-wrapper img {
+            width: clamp(350px, 50vw, 800px) !important;
+            height: clamp(210px, 30vw, 480px) !important;
+            max-width: 800px !important;
+            max-height: 480px !important;
+          }
+        }
+        
+        @media (min-width: 1280px) and (max-height: 900px) {
+          .hero-content-wrapper h1 {
+            font-size: clamp(32px, 3.4vw, 60px) !important;
+          }
+          .hero-content-wrapper p {
+            font-size: clamp(16px, 1.2vw, 22px) !important;
+          }
+          .macbook-wrapper img {
+            width: clamp(400px, 52vw, 850px) !important;
+            height: clamp(240px, 32vw, 510px) !important;
+            max-width: 850px !important;
+            max-height: 510px !important;
+          }
+        }
+        
+        @media (min-width: 1440px) and (max-height: 900px) {
+          .hero-content-wrapper h1 {
+            font-size: clamp(36px, 3.6vw, 64px) !important;
+          }
+          .macbook-wrapper img {
+            width: clamp(450px, 54vw, 950px) !important;
+            height: clamp(270px, 34vw, 570px) !important;
+            max-width: 950px !important;
+            max-height: 570px !important;
+          }
         }
       `}</style>
       {/* Background Gradient Image - direct, no modifications */}
@@ -144,30 +262,48 @@ export default function Hero() {
         <Navbar />
       </div>
 
-      {/* Hero Container - Flexbox layout to prevent overlap */}
-      {/* Using Tailwind responsive classes like the example project */}
-      <div className="flex flex-col lg:flex-row items-start justify-between w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 gap-5 lg:gap-8 xl:gap-12 relative z-10" style={{ marginTop: 'clamp(80px, 12vh, 120px)' }}>
+      {/* Hero Container - Responsive layout using Tailwind breakpoints */}
+      {/* Mobile-first: flex-col, Desktop: flex-row */}
+      {/* Fits on one page for all laptop sizes - no scrolling */}
+      {/* Figma: Top: 329px, Left: 96px - scales proportionally */}
+      <div className="hero-container flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full max-w-[1920px] mx-auto gap-2 sm:gap-3 md:gap-4 lg:gap-4 xl:gap-6 relative z-10" style={{
+        height: 'calc(100vh - clamp(80px, 12vh, 120px))',
+        minHeight: 'calc(100vh - clamp(80px, 12vh, 120px))',
+        maxHeight: 'calc(100vh - clamp(80px, 12vh, 120px))',
+        paddingTop: 'clamp(40px, 10vh, 329px)',
+        paddingBottom: 'clamp(10px, 1vh, 20px)',
+        overflow: 'hidden'
+      }}>
         {/* Frame 1707481559 - Left Column Text Content */}
         {/* Figma: Width Fixed 876px, Height Hug 447px, Top: 329px, Left: 96px, Gap: 24px */}
+        {/* Top: 329px / 1920px = 17.14vw, max 329px (Figma exact) */}
+        {/* Left: 96px / 1920px = 5vw, max 96px (Figma exact) - handled by container padding */}
+        {/* Gap: 24px / 1920px = 1.25vw, max 24px (Figma exact) */}
         <div 
-          className="hero-content-wrapper flex flex-col w-full lg:w-auto"
+          className="hero-content-wrapper flex flex-col w-full"
           style={{
-            gap: 'clamp(16px, 1.8vw, 24px)',
+            gap: 'clamp(8px, 1.25vw, 24px)',
             padding: 0,
-            margin: 0
+            margin: 0,
+            marginLeft: 0,
+            marginTop: 0
           }}
         >
           {/* Text: Professional Contract Intelligence for Modern Buyer's Agent */}
           {/* Figma: 876px × 303px, Poppins 600, 72px, 140% line-height */}
+          {/* Width: 876px / 1920px = 45.625vw, max 876px (Figma exact) */}
+          {/* Height: 303px / 1920px = 15.78vw, max 303px (Figma exact) */}
+          {/* Font: 72px / 1920px = 3.75vw, max 72px (Figma exact) */}
           <h1 
-            className="text-white leading-tight"
+            className="text-white leading-tight w-full"
             style={{
-              width: '100%',
+              width: 'clamp(280px, 45.625vw, 876px)',
               maxWidth: '876px',
               height: 'fit-content',
+              minHeight: 'clamp(100px, 15.78vw, 303px)',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 600,
-              fontSize: 'clamp(40px, 5vw, 72px)',
+              fontSize: 'clamp(24px, 3.75vw, 72px)',
               lineHeight: '140%',
               letterSpacing: '0px',
               color: '#FFFFFF',
@@ -180,15 +316,19 @@ export default function Hero() {
           
           {/* Text: Powered by AI. Backed by people. */}
           {/* Figma: 405px × 36px, Poppins 500, 24px, 150% line-height, #E5E5E5 */}
+          {/* Width: 405px / 1920px = 21.09vw, max 405px (Figma exact) */}
+          {/* Height: 36px / 1920px = 1.88vw, max 36px (Figma exact) */}
+          {/* Font: 24px / 1920px = 1.25vw, max 24px (Figma exact) */}
           <p 
-            className="text-white"
+            className="text-white w-full"
             style={{
-              width: '100%',
+              width: 'clamp(200px, 21.09vw, 405px)',
               maxWidth: '405px',
               height: 'fit-content',
+              minHeight: 'clamp(20px, 1.88vw, 36px)',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 500,
-              fontSize: 'clamp(18px, 2.2vw, 24px)',
+              fontSize: 'clamp(14px, 1.25vw, 24px)',
               lineHeight: '150%',
               letterSpacing: '0px',
               color: '#E5E5E5',
@@ -202,26 +342,33 @@ export default function Hero() {
           
           {/* Frame 1707481560 - CTA Buttons Container */}
           {/* Figma: Flow Horizontal, Width Hug 491px, Height Hug 60px, Gap: 24px */}
+          {/* Width: 491px / 1920px = 25.57vw, max 491px (Figma exact) */}
+          {/* Height: 60px / 1920px = 3.13vw, max 60px (Figma exact) */}
+          {/* Gap: 24px / 1920px = 1.25vw, max 24px (Figma exact) */}
           <div 
-            className="flex flex-col sm:flex-row items-stretch sm:items-center"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center w-full"
             style={{
-              width: '100%',
+              width: 'clamp(280px, 25.57vw, 491px)',
               maxWidth: '491px',
               height: 'fit-content',
-              gap: 'clamp(16px, 2vw, 24px)'
+              minHeight: 'clamp(40px, 3.13vw, 60px)',
+              gap: 'clamp(12px, 1.25vw, 24px)'
             }}
           >
             {/* Frame 1707481449 - Get Started Free Button */}
             {/* Figma: Width Hug 330px, Height Hug 60px, Prism Colors, stars-01 (24px), Solid (22px at 1px,1px) */}
-            <div className="w-full sm:w-auto" style={{ width: '100%', maxWidth: '330px', height: 'fit-content' }}>
+            {/* Width: 330px / 1920px = 17.19vw, max 330px (Figma exact) */}
+            {/* Height: 60px / 1920px = 3.13vw, max 60px (Figma exact) */}
+            <div className="w-full sm:w-auto" style={{ width: '100%', maxWidth: '100%', height: 'fit-content' }}>
               {/* Prism Colors - Component */}
               <div 
-                className="flex flex-col rounded-2xl w-full sm:w-[330px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
+                className="flex flex-col rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                 style={{ 
-                  width: '100%',
+                  width: 'clamp(200px, 17.19vw, 330px)',
                   maxWidth: '330px',
-                  minWidth: 'clamp(250px, 80%, 280px)',
-                  height: 'fit-content',
+                  minWidth: 0,
+                  height: 'clamp(40px, 3.13vw, 60px)',
+                  minHeight: 'clamp(40px, 3.13vw, 60px)',
                   borderRadius: '16px',
                   padding: '2px',
                   gap: '10px',
@@ -237,11 +384,11 @@ export default function Hero() {
                     width: '100%',
                     height: 'fit-content',
                     borderRadius: '16px',
-                    paddingTop: 'clamp(12px, 1.5vh, 16px)',
-                    paddingRight: 'clamp(24px, 3vw, 32px)',
-                    paddingBottom: 'clamp(12px, 1.5vh, 16px)',
-                    paddingLeft: 'clamp(24px, 3vw, 32px)',
-                    gap: '16px',
+                    paddingTop: 'clamp(10px, 0.83vw, 16px)',
+                    paddingRight: 'clamp(16px, 1.67vw, 32px)',
+                    paddingBottom: 'clamp(10px, 0.83vw, 16px)',
+                    paddingLeft: 'clamp(16px, 1.67vw, 32px)',
+                    gap: 'clamp(8px, 0.83vw, 16px)',
                     backgroundColor: '#16062C',
                     backdropFilter: 'blur(30px)',
                     border: 'none',
@@ -249,32 +396,43 @@ export default function Hero() {
                   }}
                 >
                   {/* stars-01 - Component */}
-                  <div style={{ width: '24px', height: '24px', flexShrink: 0, position: 'relative' }}>
+                  {/* Figma: 24px × 24px, Solid: 22px × 22px at 1px, 1px */}
+                  {/* Container: 24px / 1920px = 1.25vw, max 24px (Figma exact) */}
+                  {/* SVG: 22px / 1920px = 1.15vw, max 22px (Figma exact) */}
+                  {/* Position: 1px / 1920px = 0.052vw, max 1px (Figma exact) */}
+                  <div style={{ 
+                    width: 'clamp(16px, 1.25vw, 24px)', 
+                    height: 'clamp(16px, 1.25vw, 24px)', 
+                    flexShrink: 0, 
+                    position: 'relative' 
+                  }}>
                     {/* Solid - Inside stars-01 */}
                     <svg 
-                      width="22" 
-                      height="22" 
+                      width="clamp(18px, 1.15vw, 22px)"
+                      height="clamp(18px, 1.15vw, 22px)"
                       viewBox="0 0 22 22" 
                       fill="none" 
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
                         position: 'absolute',
-                        top: '1px',
-                        left: '1px'
+                        top: 'clamp(0.5px, 0.052vw, 1px)',
+                        left: 'clamp(0.5px, 0.052vw, 1px)'
                       }}
                     >
                       <path d="M11 0L13.5 8.5L22 11L13.5 13.5L11 22L8.5 13.5L0 11L8.5 8.5L11 0Z" fill="#FFFFFF"/>
                     </svg>
                   </div>
                   {/* Text "Get Started Free" */}
+                  {/* Font: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}
+                  {/* Width: 130px / 1920px = 6.77vw, max 130px (Figma exact) */}
                   <span 
                     className="text-white whitespace-nowrap"
                     style={{ 
-                      width: '130px',
+                      width: 'clamp(100px, 6.77vw, 130px)',
                       height: '24px',
                       fontFamily: 'Poppins, sans-serif',
                       fontWeight: 500,
-                      fontSize: '16px',
+                      fontSize: 'clamp(12px, 0.83vw, 16px)',
                       lineHeight: '150%',
                       letterSpacing: '0px',
                       color: '#FFFFFF',
@@ -292,15 +450,17 @@ export default function Hero() {
             
             {/* Text: See How It Works */}
             {/* Figma: 137px × 24px, #4B024F, Poppins 500, 16px */}
+            {/* Font: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}
+            {/* Width: 137px / 1920px = 7.14vw, max 137px (Figma exact) */}
             <button 
               className="rounded-lg transition-all duration-300 w-full sm:w-auto text-center sm:text-left hover:opacity-80 hover:scale-105 active:scale-95"
               style={{
-                width: '100%',
+                width: 'clamp(100px, 7.14vw, 137px)',
                 maxWidth: '137px',
                 height: '24px',
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: 500,
-                fontSize: 'clamp(14px, 1.4vw, 16px)',
+                fontSize: 'clamp(12px, 0.83vw, 16px)',
                 lineHeight: '150%',
                 letterSpacing: '0px',
                 color: '#4B024F',
@@ -324,16 +484,18 @@ export default function Hero() {
 
         {/* Macbook - Desktop version - Responsive positioning for all laptop sizes */}
         {/* Figma: Width 1,086.84px, Height 657px, Top 254px, Left 940px */}
-        {/* Responsive for: 11", 12", 13", 14", 15", 16" laptops */}
-        {/* Using Tailwind responsive classes - Figma properties as max values */}
+        {/* Scales proportionally: 1087px / 1920px = 56.67vw, max 1087px (Figma exact) */}
+        {/* Height: 657px / 1920px = 34.22vw, max 657px (Figma exact) */}
         <div className="macbook-wrapper hidden lg:flex items-center justify-center">
           <img
             src="/Macbook2 (1).png"
             alt="MacBook mockup"
-            className="object-contain w-full h-auto"
+            className="object-contain"
             style={{
-              height: 'auto',
-              width: '100%'
+              width: 'clamp(280px, 56.67vw, 1087px)',
+              height: 'clamp(169px, 34.22vw, 657px)',
+              maxWidth: '1087px',
+              maxHeight: '657px'
             }}
           />
         </div>

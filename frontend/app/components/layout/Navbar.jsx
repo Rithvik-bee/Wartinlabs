@@ -55,17 +55,27 @@ export default function Navbar() {
     <nav className="relative z-50">
       {/* Frame 1707481561 - Full Navbar Container */}
       {/* Figma: Width Fixed 1853px, Height Hug 105px, Top 48px, Left 48px, Padding Left 48px, Justify space-between */}
+      {/* Scales proportionally: 48px / 1920px = 2.5vw, max 48px (Figma exact) */}
       {/* NO BACKGROUND - transparent, only dimensions and spacing */}
       <div 
-        className="h-[80px] lg:h-[105px] flex items-center justify-between w-full max-w-[1853px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24"
+        className="h-[80px] lg:h-[105px] flex items-center justify-between w-full max-w-[1853px] mx-auto"
         style={{ 
-          marginTop: 'clamp(16px, 2vh, 48px)',
-          marginLeft: '0px'
+          marginTop: 'clamp(16px, 2.5vw, 48px)',
+          paddingLeft: 'clamp(12px, 2.5vw, 48px)',
+          paddingRight: 'clamp(12px, 2.5vw, 48px)'
         }}
       >
         {/* Frame 1707481525 - Left Side */}
         {/* Figma: Width Fixed 876px, Height Hug 105px, Radius 16px, Gap 32px */}
-        <div className="w-auto lg:w-[876px] h-[80px] lg:h-[105px] flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 rounded-2xl flex-1 lg:flex-none">
+        {/* Scales proportionally: 876px / 1920px = 45.625vw, max 876px (Figma exact) */}
+        {/* Gap: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
+        <div 
+          className="w-auto h-[80px] lg:h-[105px] flex items-center rounded-2xl flex-1 lg:flex-none"
+          style={{
+            width: 'clamp(200px, 45.625vw, 876px)',
+            gap: 'clamp(8px, 1.67vw, 32px)'
+          }}
+        >
           {/* Frame 1707481558 - Parent, Child of 1707481525 */}
           {/* Figma: Width Hug 153px, Height Hug 18px, Gap 16px, Flow Horizontal */}
           <div className="hidden lg:flex items-center gap-4" style={{ width: 'fit-content', height: 'fit-content' }}>
@@ -76,24 +86,26 @@ export default function Navbar() {
           </div>
           {/* Frame 1707481349 - Pricing */}
           {/* Figma: Width Hug 135px, Height Fixed 105px, Radius 16px, Padding Left 32px Right 32px, Gap 10px, Flow Horizontal */}
+          {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
           <div 
             className="hidden lg:flex h-[105px] items-center rounded-2xl"
             style={{ 
               width: 'fit-content',
-              paddingLeft: '32px',
-              paddingRight: '32px',
+              paddingLeft: 'clamp(12px, 1.67vw, 32px)',
+              paddingRight: 'clamp(12px, 1.67vw, 32px)',
               gap: '10px'
             }}
           >
             {/* Text Pricing - Width 71px, Height 30px */}
             {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
+            {/* Font: 20px / 1920px = 1.04vw, max 20px (Figma exact) */}
             <a 
               href="#pricing" 
-              className="text-white font-semibold text-xl leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
+              className="text-white font-semibold leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
               style={{ 
                 fontFamily: 'Poppins, sans-serif', 
                 fontWeight: 600,
-                fontSize: '20px',
+                fontSize: 'clamp(14px, 1.04vw, 20px)',
                 lineHeight: '150%',
                 letterSpacing: '0px',
                 color: '#FFFFFF'
@@ -104,24 +116,26 @@ export default function Navbar() {
           </div>
           {/* Frame 1707481345 - How it works */}
           {/* Figma: Width Hug 192px, Height Fixed 105px, Radius 16px, Padding Left 32px Right 32px, Gap 10px, Flow Horizontal */}
+          {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
           <div 
             className="hidden lg:flex h-[105px] items-center rounded-2xl"
             style={{ 
               width: 'fit-content',
-              paddingLeft: '32px',
-              paddingRight: '32px',
+              paddingLeft: 'clamp(12px, 1.67vw, 32px)',
+              paddingRight: 'clamp(12px, 1.67vw, 32px)',
               gap: '10px'
             }}
           >
             {/* Text How it works - Width 128px, Height 30px */}
             {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
+            {/* Font: 20px / 1920px = 1.04vw, max 20px (Figma exact) */}
             <a 
               href="#how-it-works" 
-              className="text-white font-semibold text-xl leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
+              className="text-white font-semibold leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
               style={{ 
                 fontFamily: 'Poppins, sans-serif', 
                 fontWeight: 600,
-                fontSize: '20px',
+                fontSize: 'clamp(14px, 1.04vw, 20px)',
                 lineHeight: '150%',
                 letterSpacing: '0px',
                 color: '#FFFFFF'
@@ -132,24 +146,26 @@ export default function Navbar() {
           </div>
           {/* Frame 1707481347 - About */}
           {/* Figma: Width Hug 126px, Height Fixed 105px, Radius 16px, Padding Left 32px Right 32px, Gap 10px, Flow Horizontal */}
+          {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
           <div 
             className="hidden lg:flex h-[105px] items-center rounded-2xl"
             style={{ 
               width: 'fit-content',
-              paddingLeft: '32px',
-              paddingRight: '32px',
+              paddingLeft: 'clamp(12px, 1.67vw, 32px)',
+              paddingRight: 'clamp(12px, 1.67vw, 32px)',
               gap: '10px'
             }}
           >
             {/* Text About - Width 62px, Height 30px */}
             {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
+            {/* Font: 20px / 1920px = 1.04vw, max 20px (Figma exact) */}
             <a 
               href="#about" 
-              className="text-white font-semibold text-xl leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
+              className="text-white font-semibold leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
               style={{ 
                 fontFamily: 'Poppins, sans-serif', 
                 fontWeight: 600,
-                fontSize: '20px',
+                fontSize: 'clamp(14px, 1.04vw, 20px)',
                 lineHeight: '150%',
                 letterSpacing: '0px',
                 color: '#FFFFFF'
@@ -162,25 +178,33 @@ export default function Navbar() {
 
         {/* Frame 1707481528 - Right Side */}
         {/* Figma: Width Hug 481px, Height Hug 105px, Radius 16px, Gap 32px */}
-        <div className="h-[80px] lg:h-[105px] flex items-center gap-2 lg:gap-8 rounded-2xl">
+        {/* Gap: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
+        <div 
+          className="h-[80px] lg:h-[105px] flex items-center rounded-2xl"
+          style={{
+            gap: 'clamp(8px, 1.67vw, 32px)'
+          }}
+        >
           {user ? (
             <>
               {/* User Name and Logout */}
+              {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
               <div 
-                className="hidden lg:flex h-[105px] items-center rounded-2xl gap-4"
+                className="hidden lg:flex h-[105px] items-center rounded-2xl"
                 style={{ 
                   width: 'fit-content',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
+                  paddingLeft: 'clamp(12px, 1.67vw, 32px)',
+                  paddingRight: 'clamp(12px, 1.67vw, 32px)',
                   gap: '10px'
                 }}
               >
+                {/* Font: 20px / 1920px = 1.04vw, max 20px (Figma exact) */}
                 <span 
-                  className="text-white font-semibold text-xl leading-[150%] whitespace-nowrap" 
+                  className="text-white font-semibold leading-[150%] whitespace-nowrap" 
                   style={{ 
                     fontFamily: 'Poppins, sans-serif', 
                     fontWeight: 600,
-                    fontSize: '20px',
+                    fontSize: 'clamp(14px, 1.04vw, 20px)',
                     lineHeight: '150%',
                     letterSpacing: '0px',
                     color: '#FFFFFF'
@@ -194,17 +218,18 @@ export default function Navbar() {
                 className="hidden lg:flex h-[105px] items-center rounded-2xl cursor-pointer transition-all duration-300 hover:opacity-80 hover:scale-105 active:scale-95"
                 style={{ 
                   width: 'fit-content',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
+                  paddingLeft: 'clamp(12px, 1.67vw, 32px)',
+                  paddingRight: 'clamp(12px, 1.67vw, 32px)',
                   gap: '10px'
                 }}
               >
+                {/* Font: 20px / 1920px = 1.04vw, max 20px (Figma exact) */}
                 <span 
-                  className="text-white font-semibold text-xl leading-[150%] whitespace-nowrap" 
+                  className="text-white font-semibold leading-[150%] whitespace-nowrap" 
                   style={{ 
                     fontFamily: 'Poppins, sans-serif', 
                     fontWeight: 600,
-                    fontSize: '20px',
+                    fontSize: 'clamp(14px, 1.04vw, 20px)',
                     lineHeight: '150%',
                     letterSpacing: '0px',
                     color: '#FFFFFF'
@@ -218,24 +243,26 @@ export default function Navbar() {
             <>
               {/* Frame 1707481349 - Login */}
               {/* Figma: Width Hug 119px, Height Fixed 105px, Radius 16px, Padding Left 32px Right 32px, Gap 10px, Flow Horizontal */}
+              {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
               <div 
                 className="hidden lg:flex h-[105px] items-center rounded-2xl"
                 style={{ 
                   width: 'fit-content',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
+                  paddingLeft: 'clamp(12px, 1.67vw, 32px)',
+                  paddingRight: 'clamp(12px, 1.67vw, 32px)',
                   gap: '10px'
                 }}
               >
                 {/* Text Login - Width 55px, Height 30px */}
                 {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
+                {/* Font: 20px / 1920px = 1.04vw, max 20px (Figma exact) */}
                 <Link 
                   href="/login"
-                  className="text-white font-semibold text-xl leading-[150%] whitespace-nowrap transition-all duration-300 hover:opacity-80 hover:scale-105" 
+                  className="text-white font-semibold leading-[150%] whitespace-nowrap transition-all duration-300 hover:opacity-80 hover:scale-105" 
                   style={{ 
                     fontFamily: 'Poppins, sans-serif', 
                     fontWeight: 600,
-                    fontSize: '20px',
+                    fontSize: 'clamp(14px, 1.04vw, 20px)',
                     lineHeight: '150%',
                     letterSpacing: '0px',
                     color: '#FFFFFF'
@@ -246,13 +273,14 @@ export default function Navbar() {
               </div>
               {/* Frame 1707481449 - Sign up */}
               {/* Figma: Width Hug 330px, Height Hug 60px */}
+              {/* Scales proportionally: 330px / 1920px = 17.19vw, max 330px (Figma exact) */}
               <Link href="/register" className="hidden lg:block transition-all duration-300 hover:scale-105" style={{ width: 'fit-content', height: 'fit-content' }}>
                 {/* Prism Colors - Component */}
                 {/* Figma: Flow Vertical, Width Fixed 330px, Height Hug 60px, Radius 16px, Padding 2px, Gap 10px, Angular Gradient */}
                 <div 
                   className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                   style={{ 
-                    width: '330px',
+                    width: 'clamp(200px, 17.19vw, 330px)',
                     height: 'fit-content',
                     borderRadius: '16px',
                     padding: '2px',
@@ -263,22 +291,25 @@ export default function Navbar() {
                 >
                   {/* Frame "1" - Inside Prism Colors */}
                   {/* Figma: Flow Horizontal, Width Fill 326px, Height Hug 56px, Radius 16px, Padding Top 16px Right 32px Bottom 16px Left 32px, Gap 16px, Background #16062C, Background blur 30 */}
+                  {/* Padding: 32px / 1920px = 1.67vw, max 32px (Figma exact) */}
+                  {/* Padding Top/Bottom: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}
                   <div 
                     className="flex items-center justify-center rounded-2xl cursor-pointer transition-all duration-300 hover:bg-[#1a0a3e] active:scale-95"
                     style={{ 
-                      width: '326px',
+                      width: 'calc(100% - 4px)',
                       height: 'fit-content',
                       borderRadius: '16px',
-                      paddingTop: '16px',
-                      paddingRight: '32px',
-                      paddingBottom: '16px',
-                      paddingLeft: '32px',
+                      paddingTop: 'clamp(8px, 0.83vw, 16px)',
+                      paddingRight: 'clamp(12px, 1.67vw, 32px)',
+                      paddingBottom: 'clamp(8px, 0.83vw, 16px)',
+                      paddingLeft: 'clamp(12px, 1.67vw, 32px)',
                       backgroundColor: '#16062C',
                       backdropFilter: 'blur(30px)'
                     }}
                   >
                     {/* Text "Sign up" - Inside Frame "1" */}
                     {/* Figma: Width 61px, Height 24px, Font Poppins, Weight 500, Size 16px, Line height 150%, Letter spacing 0px, Color #FFFFFF, Center aligned */}
+                    {/* Font: 16px / 1920px = 0.83vw, max 16px (Figma exact) */}
                     <span 
                       className="text-white whitespace-nowrap"
                       style={{ 
@@ -286,7 +317,7 @@ export default function Navbar() {
                         height: '24px',
                         fontFamily: 'Poppins, sans-serif',
                         fontWeight: 500,
-                        fontSize: '16px',
+                        fontSize: 'clamp(12px, 0.83vw, 16px)',
                         lineHeight: '150%',
                         letterSpacing: '0px',
                         color: '#FFFFFF',
