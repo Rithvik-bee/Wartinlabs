@@ -278,14 +278,13 @@ export default function Navbar() {
                 {/* Prism Colors - Component */}
                 {/* Figma: Flow Vertical, Width Fixed 330px, Height Hug 60px, Radius 16px, Padding 2px, Gap 10px, Angular Gradient */}
                 <div 
-                  className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
+                  className="prism-gradient flex flex-col rounded-2xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                   style={{ 
                     width: 'clamp(200px, 17.19vw, 330px)',
                     height: 'fit-content',
                     borderRadius: '16px',
                     padding: '2px',
                     gap: '10px',
-                    background: 'conic-gradient(from 90deg at 50% 50%, #050515 0deg, #050515 100deg, #00ABFF 130deg, #4D00FF 160deg, #B521BA 190deg, #B521BA 230deg, #4D00FF 270deg, #050515 320deg, #050515 360deg)',
                     boxShadow: '0 0 16px rgba(181, 33, 186, 0.5)'
                   }}
                 >
@@ -491,6 +490,12 @@ export default function Navbar() {
 
       {/* Animation styles */}
       <style jsx>{`
+        /* Ensure consistent gradient across all screen sizes */
+        .prism-gradient {
+          background: conic-gradient(from 90deg at 50% 50%, #050515 0deg, #050515 100deg, #00ABFF 130deg, #4D00FF 160deg, #B521BA 190deg, #B521BA 230deg, #4D00FF 270deg, #050515 320deg, #050515 360deg) !important;
+          background-image: conic-gradient(from 90deg at 50% 50%, #050515 0deg, #050515 100deg, #00ABFF 130deg, #4D00FF 160deg, #B521BA 190deg, #B521BA 230deg, #4D00FF 270deg, #050515 320deg, #050515 360deg) !important;
+        }
+        
         @keyframes fadeIn {
           from {
             opacity: 0;

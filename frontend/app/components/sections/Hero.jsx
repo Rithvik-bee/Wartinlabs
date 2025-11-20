@@ -121,6 +121,12 @@ export default function Hero() {
         /* Base: Figma design is 1920px wide */
         /* All sizes scale from Figma base proportionally */
         
+        /* Ensure consistent gradient across all screen sizes */
+        .prism-gradient {
+          background: conic-gradient(from 90deg at 50% 50%, #050515 0deg, #050515 100deg, #00ABFF 130deg, #4D00FF 160deg, #B521BA 190deg, #B521BA 230deg, #4D00FF 270deg, #050515 320deg, #050515 360deg) !important;
+          background-image: conic-gradient(from 90deg at 50% 50%, #050515 0deg, #050515 100deg, #00ABFF 130deg, #4D00FF 160deg, #B521BA 190deg, #B521BA 230deg, #4D00FF 270deg, #050515 320deg, #050515 360deg) !important;
+        }
+        
         /* Content wrapper - Figma: 876px (45.625% of 1920px) */
         /* Scales proportionally: 876px / 1920px = 45.625vw, max 876px (Figma exact) */
         .hero-content-wrapper {
@@ -283,12 +289,10 @@ export default function Hero() {
       {/* Mobile-first: flex-col, Desktop: flex-row */}
       {/* Fits on one page for all laptop sizes - no scrolling */}
       {/* Figma: Top: 329px, Left: 96px - scales proportionally */}
-      <div className="hero-container flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full max-w-[1920px] mx-auto gap-2 sm:gap-3 md:gap-4 lg:gap-4 xl:gap-6 relative z-10" style={{
-        height: 'calc(100vh - clamp(80px, 12vh, 120px))',
+      <div className="hero-container flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full max-w-[1920px] mx-auto gap-4 sm:gap-6 md:gap-4 lg:gap-4 xl:gap-6 relative z-10 px-4 sm:px-6 md:px-8 lg:px-12" style={{
         minHeight: 'calc(100vh - clamp(80px, 12vh, 120px))',
-        maxHeight: 'calc(100vh - clamp(80px, 12vh, 120px))',
-        paddingTop: 'clamp(40px, 10vh, 329px)',
-        paddingBottom: 'clamp(10px, 1vh, 20px)',
+        paddingTop: 'clamp(20px, 8vh, 329px)',
+        paddingBottom: 'clamp(20px, 3vh, 40px)',
         overflow: 'hidden'
       }}>
         {/* Frame 1707481559 - Left Column Text Content */}
@@ -297,13 +301,14 @@ export default function Hero() {
         {/* Left: 96px / 1920px = 5vw, max 96px (Figma exact) - handled by container padding */}
         {/* Gap: 24px / 1920px = 1.25vw, max 24px (Figma exact) */}
         <div 
-          className="hero-content-wrapper flex flex-col w-full"
+          className="hero-content-wrapper flex flex-col w-full lg:w-auto"
           style={{
-            gap: 'clamp(8px, 1.25vw, 24px)',
+            gap: 'clamp(12px, 1.25vw, 24px)',
             padding: 0,
             margin: 0,
             marginLeft: 0,
-            marginTop: 0
+            marginTop: 0,
+            maxWidth: '100%'
           }}
         >
           {/* Text: Professional Contract Intelligence for Modern Buyer's Agent */}
@@ -365,11 +370,12 @@ export default function Hero() {
           <div 
             className="flex flex-col sm:flex-row items-stretch sm:items-center w-full"
             style={{
-              width: 'clamp(280px, 25.57vw, 491px)',
-              maxWidth: '491px',
+              width: '100%',
+              maxWidth: 'clamp(280px, 25.57vw, 491px)',
               height: 'fit-content',
               minHeight: 'clamp(40px, 3.13vw, 60px)',
-              gap: 'clamp(12px, 1.25vw, 24px)'
+              gap: 'clamp(12px, 1.25vw, 24px)',
+              marginTop: 'clamp(8px, 1vh, 16px)'
             }}
           >
             {/* Frame 1707481449 - Get Started Free Button */}
@@ -379,7 +385,7 @@ export default function Hero() {
             <div className="w-full sm:w-auto" style={{ width: '100%', maxWidth: '100%', height: 'fit-content' }}>
               {/* Prism Colors - Component */}
               <div 
-                className="flex flex-col rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
+                className="prism-gradient flex flex-col rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                 style={{ 
                   width: 'clamp(200px, 17.19vw, 330px)',
                   maxWidth: '330px',
@@ -389,7 +395,6 @@ export default function Hero() {
                   borderRadius: '16px',
                   padding: '2px',
                   gap: '10px',
-                  background: 'conic-gradient(from 90deg at 50% 50%, #050515 0deg, #050515 100deg, #00ABFF 130deg, #4D00FF 160deg, #B521BA 190deg, #B521BA 230deg, #4D00FF 270deg, #050515 320deg, #050515 360deg)',
                   boxShadow: '0 0 16px rgba(181, 33, 186, 0.5)'
                 }}
               >
@@ -508,6 +513,30 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Macbook - Mobile version - Inside flex container, appears after text */}
+        <div className="md:hidden w-full flex justify-center items-center mt-6 mb-2 flex-shrink-0">
+          <img
+            src="/Macbook (1).png"
+            alt="MacBook mockup"
+            className="w-[70%] max-w-[280px] h-auto"
+          />
+        </div>
+
+        {/* Macbook - Tablet version - Visible on tablet */}
+        <div 
+          className="hidden md:block lg:hidden absolute z-10 w-full flex justify-center"
+          style={{
+            top: 'clamp(450px, 50vh, 550px)',
+            left: '0'
+          }}
+        >
+          <img
+            src="/Macbook (1).png"
+            alt="MacBook mockup"
+            className="w-[70%] max-w-[500px] h-auto"
+          />
+        </div>
+
         {/* Macbook - Desktop version - Responsive positioning for all laptop sizes */}
         {/* Figma: MacBook Width 1,086.84px, Height 657px, Top 254px, Left 940px */}
         {/* Figma: Screen inside MacBook: Width 839.39px, Height 586px */}
@@ -534,36 +563,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Macbook - Tablet version - Visible on tablet */}
-      <div 
-        className="hidden md:block lg:hidden absolute z-10 w-full flex justify-center"
-        style={{
-          top: 'clamp(450px, 50vh, 550px)',
-          left: '0'
-        }}
-      >
-        <img
-          src="/Macbook (1).png"
-          alt="MacBook mockup"
-          className="w-[70%] max-w-[500px] h-auto"
-        />
-      </div>
-
-      {/* Macbook - Mobile version - Visible on mobile */}
-      <div 
-        className="md:hidden absolute z-10 w-full flex justify-center"
-        style={{
-          top: 'clamp(500px, 60vh, 600px)',
-          left: '0'
-        }}
-      >
-        <img
-          src="/Macbook (1).png"
-          alt="MacBook mockup"
-          className="w-[85%] max-w-[350px] h-auto"
-        />
-      </div>
-
       {/* Contact Form Modal */}
       {isModalOpen && (
         <div 
@@ -576,8 +575,12 @@ export default function Hero() {
           }}
         >
           <div 
-            className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto" 
-            style={{ minWidth: 0 }}
+            className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto" 
+            style={{ 
+              minWidth: 0,
+              margin: 'auto',
+              maxHeight: 'calc(100vh - 2rem)'
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <style dangerouslySetInnerHTML={{__html: `
