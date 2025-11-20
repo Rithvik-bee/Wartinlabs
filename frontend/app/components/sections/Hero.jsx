@@ -98,18 +98,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-screen flex flex-col overflow-hidden">
-      <style jsx global>{`
-        @media (min-width: 1024px) {
-          .hero-content-wrapper {
-            width: 876px !important;
-            top: 329px !important;
-            left: 96px !important;
-            gap: 24px !important;
-            padding: 0 !important;
-          }
-        }
-      `}</style>
+    <section className="relative w-full min-h-screen flex flex-col overflow-x-hidden">
       {/* Background Gradient Image - direct, no modifications */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -117,6 +106,7 @@ export default function Hero() {
           alt="Hero background"
           fill
           priority
+          className="object-cover"
         />
       </div>
 
@@ -127,30 +117,24 @@ export default function Hero() {
 
       {/* Frame 1707481559 - Left Column Text Content */}
       <div 
-        className="hero-content-wrapper absolute z-10 px-4"
+        className="relative z-10 flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24"
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          maxWidth: '876px',
-          height: 'fit-content',
-          top: '180px',
-          left: '0',
-          gap: '20px',
-          margin: 0,
-          padding: 0
+          marginTop: 'clamp(120px, 15vh, 200px)',
+          marginBottom: 'clamp(40px, 8vh, 80px)',
+          gap: 'clamp(16px, 2vw, 24px)',
+          maxWidth: '100%'
         }}
       >
           {/* Text: Professional Contract Intelligence for Modern Buyer's Agent */}
           <h1 
-            className="text-white text-3xl lg:text-[72px] leading-tight lg:leading-[140%]"
+            className="text-white leading-tight"
             style={{
               width: '100%',
               maxWidth: '876px',
               height: 'fit-content',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 600,
-              fontSize: 'clamp(28px, 5vw, 72px)',
+              fontSize: 'clamp(32px, 6vw, 72px)',
               lineHeight: '140%',
               letterSpacing: '0px',
               color: '#FFFFFF',
@@ -163,20 +147,21 @@ export default function Hero() {
           
           {/* Text: Powered by AI. Backed by people. */}
           <p 
-            className="text-white text-base lg:text-2xl"
+            className="text-white"
             style={{
               width: '100%',
               maxWidth: '405px',
               height: 'fit-content',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 500,
-              fontSize: 'clamp(16px, 3vw, 24px)',
+              fontSize: 'clamp(18px, 2.5vw, 24px)',
               lineHeight: '150%',
               letterSpacing: '0px',
               color: '#E5E5E5',
               textAlign: 'left',
               margin: 0,
-              padding: 0
+              padding: 0,
+              marginTop: 'clamp(8px, 1vh, 16px)'
             }}
           >
             Powered by AI. Backed by people.
@@ -184,7 +169,7 @@ export default function Hero() {
           
           {/* Frame 1707481560 - CTA Buttons Container */}
           <div 
-            className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-6"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 mt-4 sm:mt-6"
             style={{
               width: '100%',
               maxWidth: '491px',
@@ -192,10 +177,10 @@ export default function Hero() {
             }}
           >
             {/* Frame 1707481449 - Get Started Free Button */}
-            <div className="w-full lg:w-auto" style={{ width: '100%', maxWidth: '330px', height: 'fit-content' }}>
+            <div className="w-full sm:w-auto" style={{ width: '100%', maxWidth: '330px', height: 'fit-content' }}>
               {/* Prism Colors - Component */}
               <div 
-                className="flex flex-col rounded-2xl w-full lg:w-[330px]"
+                className="flex flex-col rounded-2xl w-full sm:w-[330px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                 style={{ 
                   width: '100%',
                   maxWidth: '330px',
@@ -210,15 +195,15 @@ export default function Hero() {
                 {/* Frame "1" - Inside Prism Colors */}
                 <button 
                   onClick={() => setIsModalOpen(true)}
-                  className="flex items-center justify-center rounded-2xl cursor-pointer w-full"
+                  className="flex items-center justify-center rounded-2xl cursor-pointer w-full transition-all duration-300 hover:bg-[#1a0a3e] active:scale-95"
                   style={{ 
                     width: '100%',
                     height: 'fit-content',
                     borderRadius: '16px',
-                    paddingTop: '16px',
-                    paddingRight: '32px',
-                    paddingBottom: '16px',
-                    paddingLeft: '32px',
+                    paddingTop: 'clamp(12px, 1.5vh, 16px)',
+                    paddingRight: 'clamp(24px, 3vw, 32px)',
+                    paddingBottom: 'clamp(12px, 1.5vh, 16px)',
+                    paddingLeft: 'clamp(24px, 3vw, 32px)',
                     gap: '16px',
                     backgroundColor: '#16062C',
                     backdropFilter: 'blur(30px)',
@@ -270,14 +255,14 @@ export default function Hero() {
             
             {/* Text: See How It Works */}
             <button 
-              className="rounded-lg hover:underline transition-all duration-200 w-full lg:w-auto text-center lg:text-left"
+              className="rounded-lg transition-all duration-300 w-full sm:w-auto text-center sm:text-left hover:opacity-80 hover:scale-105 active:scale-95"
               style={{
                 width: '100%',
                 maxWidth: '137px',
                 height: 'fit-content',
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: 500,
-                fontSize: '16px',
+                fontSize: 'clamp(14px, 1.5vw, 16px)',
                 lineHeight: '150%',
                 letterSpacing: '0px',
                 color: '#4B024F',
@@ -288,41 +273,61 @@ export default function Hero() {
                 backgroundColor: 'transparent',
                 border: 'none',
                 outline: 'none',
-                padding: '12px 0'
+                padding: 'clamp(10px, 1.5vh, 12px) 0',
+                textDecoration: 'none'
               }}
+              onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
+              onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
             >
               See How It Works
             </button>
           </div>
       </div>
 
-      {/* Macbook - Desktop version - Hidden on mobile, visible on desktop */}
+      {/* Macbook - Desktop version - Responsive positioning */}
       <div 
-        className="hidden lg:block absolute z-10"
+        className="hidden lg:block absolute z-10 right-0"
         style={{
-          top: '254px',
-          left: '940px'
+          top: 'clamp(200px, 20vh, 254px)',
+          right: 'clamp(20px, 5vw, 96px)',
+          width: 'clamp(400px, 45vw, 600px)',
+          maxWidth: '600px'
         }}
       >
         <img
           src="/Macbook2 (1).png"
           alt="MacBook mockup"
-          className="w-auto h-auto"
+          className="w-full h-auto object-contain"
         />
       </div>
 
-      {/* Macbook - Mobile version - Visible on mobile, hidden on desktop */}
+      {/* Macbook - Tablet version - Visible on tablet */}
       <div 
-        className="lg:hidden absolute z-10 w-full flex justify-center"
+        className="hidden md:block lg:hidden absolute z-10 w-full flex justify-center"
         style={{
-          top: '500px',
+          top: 'clamp(450px, 50vh, 550px)',
           left: '0'
         }}
       >
         <img
           src="/Macbook2 (1).png"
           alt="MacBook mockup"
-          className="w-[90%] max-w-[400px] h-auto"
+          className="w-[70%] max-w-[500px] h-auto"
+        />
+      </div>
+
+      {/* Macbook - Mobile version - Visible on mobile */}
+      <div 
+        className="md:hidden absolute z-10 w-full flex justify-center"
+        style={{
+          top: 'clamp(500px, 60vh, 600px)',
+          left: '0'
+        }}
+      >
+        <img
+          src="/Macbook2 (1).png"
+          alt="MacBook mockup"
+          className="w-[85%] max-w-[350px] h-auto"
         />
       </div>
 

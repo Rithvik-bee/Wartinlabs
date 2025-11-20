@@ -57,16 +57,15 @@ export default function Navbar() {
       {/* Figma: Width Fixed 1853px, Height Hug 105px, Top 48px, Left 48px, Padding Left 48px, Justify space-between */}
       {/* NO BACKGROUND - transparent, only dimensions and spacing */}
       <div 
-        className="h-[80px] lg:h-[105px] flex items-center justify-between w-full max-w-[1853px] px-4 lg:px-0"
+        className="h-[80px] lg:h-[105px] flex items-center justify-between w-full max-w-[1853px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24"
         style={{ 
-          marginTop: '16px',
-          marginLeft: '0px',
-          paddingLeft: '0px'
+          marginTop: 'clamp(16px, 2vh, 48px)',
+          marginLeft: '0px'
         }}
       >
         {/* Frame 1707481525 - Left Side */}
         {/* Figma: Width Fixed 876px, Height Hug 105px, Radius 16px, Gap 32px */}
-        <div className="w-auto lg:w-[876px] h-[80px] lg:h-[105px] flex items-center gap-2 lg:gap-8 rounded-2xl flex-1 lg:flex-none">
+        <div className="w-auto lg:w-[876px] h-[80px] lg:h-[105px] flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 rounded-2xl flex-1 lg:flex-none">
           {/* Frame 1707481558 - Parent, Child of 1707481525 */}
           {/* Figma: Width Hug 153px, Height Hug 18px, Gap 16px, Flow Horizontal */}
           <div className="hidden lg:flex items-center gap-4" style={{ width: 'fit-content', height: 'fit-content' }}>
@@ -90,7 +89,7 @@ export default function Navbar() {
             {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
             <a 
               href="#pricing" 
-              className="text-white font-semibold text-xl leading-[150%]" 
+              className="text-white font-semibold text-xl leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
               style={{ 
                 fontFamily: 'Poppins, sans-serif', 
                 fontWeight: 600,
@@ -118,7 +117,7 @@ export default function Navbar() {
             {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
             <a 
               href="#how-it-works" 
-              className="text-white font-semibold text-xl leading-[150%]" 
+              className="text-white font-semibold text-xl leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
               style={{ 
                 fontFamily: 'Poppins, sans-serif', 
                 fontWeight: 600,
@@ -146,7 +145,7 @@ export default function Navbar() {
             {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
             <a 
               href="#about" 
-              className="text-white font-semibold text-xl leading-[150%]" 
+              className="text-white font-semibold text-xl leading-[150%] transition-all duration-300 hover:opacity-80 hover:scale-105" 
               style={{ 
                 fontFamily: 'Poppins, sans-serif', 
                 fontWeight: 600,
@@ -192,7 +191,7 @@ export default function Navbar() {
               </div>
               <button
                 onClick={handleLogout}
-                className="hidden lg:flex h-[105px] items-center rounded-2xl cursor-pointer"
+                className="hidden lg:flex h-[105px] items-center rounded-2xl cursor-pointer transition-all duration-300 hover:opacity-80 hover:scale-105 active:scale-95"
                 style={{ 
                   width: 'fit-content',
                   paddingLeft: '32px',
@@ -232,7 +231,7 @@ export default function Navbar() {
                 {/* Figma: Font Poppins, Weight 600, Size 20px, Line height 150%, Letter spacing 0px, Color #FFFFFF */}
                 <Link 
                   href="/login"
-                  className="text-white font-semibold text-xl leading-[150%] whitespace-nowrap" 
+                  className="text-white font-semibold text-xl leading-[150%] whitespace-nowrap transition-all duration-300 hover:opacity-80 hover:scale-105" 
                   style={{ 
                     fontFamily: 'Poppins, sans-serif', 
                     fontWeight: 600,
@@ -247,11 +246,11 @@ export default function Navbar() {
               </div>
               {/* Frame 1707481449 - Sign up */}
               {/* Figma: Width Hug 330px, Height Hug 60px */}
-              <Link href="/register" className="hidden lg:block" style={{ width: 'fit-content', height: 'fit-content' }}>
+              <Link href="/register" className="hidden lg:block transition-all duration-300 hover:scale-105" style={{ width: 'fit-content', height: 'fit-content' }}>
                 {/* Prism Colors - Component */}
                 {/* Figma: Flow Vertical, Width Fixed 330px, Height Hug 60px, Radius 16px, Padding 2px, Gap 10px, Angular Gradient */}
                 <div 
-                  className="flex flex-col rounded-2xl"
+                  className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(181,33,186,0.7)]"
                   style={{ 
                     width: '330px',
                     height: 'fit-content',
@@ -265,7 +264,7 @@ export default function Navbar() {
                   {/* Frame "1" - Inside Prism Colors */}
                   {/* Figma: Flow Horizontal, Width Fill 326px, Height Hug 56px, Radius 16px, Padding Top 16px Right 32px Bottom 16px Left 32px, Gap 16px, Background #16062C, Background blur 30 */}
                   <div 
-                    className="flex items-center justify-center rounded-2xl cursor-pointer"
+                    className="flex items-center justify-center rounded-2xl cursor-pointer transition-all duration-300 hover:bg-[#1a0a3e] active:scale-95"
                     style={{ 
                       width: '326px',
                       height: 'fit-content',
