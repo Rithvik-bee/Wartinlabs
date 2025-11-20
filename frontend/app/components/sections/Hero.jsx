@@ -455,7 +455,8 @@ export default function Hero() {
             <button 
               className="rounded-lg transition-all duration-300 w-full sm:w-auto text-center sm:text-left hover:opacity-80 hover:scale-105 active:scale-95"
               style={{
-                width: 'clamp(100px, 7.14vw, 137px)',
+                width: 'auto',
+                minWidth: 'clamp(100px, 7.14vw, 137px)',
                 maxWidth: '137px',
                 height: '24px',
                 fontFamily: 'Poppins, sans-serif',
@@ -472,7 +473,10 @@ export default function Hero() {
                 border: 'none',
                 outline: 'none',
                 padding: 0,
-                textDecoration: 'none'
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
               }}
               onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
               onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
