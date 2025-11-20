@@ -100,33 +100,32 @@ export default function Hero() {
   return (
     <section className="relative w-full min-h-screen flex flex-col overflow-x-hidden">
       <style jsx>{`
-        /* Responsive adjustments for different laptop sizes */
-        @media (min-width: 1024px) and (max-width: 1280px) {
-          /* 11" - 13" laptops */
-          .hero-content {
-            width: clamp(70%, 75vw, 876px) !important;
-          }
-          .macbook-image {
-            width: clamp(350px, 40vw, 800px) !important;
+        /* Simple fluid responsive - Figma properties as max values */
+        /* Using clamp() for smooth scaling - works on ANY screen size */
+        .hero-content-wrapper {
+          width: clamp(280px, 48vw, 876px);
+          max-width: 876px;
+        }
+        
+        @media (min-width: 1024px) {
+          .hero-content-wrapper {
+            width: clamp(500px, 48vw, 876px);
           }
         }
-        @media (min-width: 1281px) and (max-width: 1440px) {
-          /* 14" - 15" laptops */
-          .hero-content {
-            width: clamp(80%, 85vw, 876px) !important;
-          }
-          .macbook-image {
-            width: clamp(450px, 42vw, 950px) !important;
+        
+        .macbook-wrapper {
+          width: clamp(280px, 45vw, 1087px);
+          max-width: 1087px;
+        }
+        
+        @media (min-width: 1024px) {
+          .macbook-wrapper {
+            width: clamp(450px, 45vw, 1087px);
           }
         }
-        @media (min-width: 1441px) {
-          /* 16" laptops and larger */
-          .hero-content {
-            width: 876px !important;
-          }
-          .macbook-image {
-            width: clamp(800px, min(45vw, 1087px), 1087px) !important;
-          }
+        
+        .macbook-wrapper img {
+          max-height: 657px;
         }
       `}</style>
       {/* Background Gradient Image - direct, no modifications */}
@@ -145,22 +144,19 @@ export default function Hero() {
         <Navbar />
       </div>
 
-      {/* Frame 1707481559 - Left Column Text Content */}
-      {/* Figma: Width Fixed 876px, Height Hug 447px, Top: 329px, Left: 96px, Gap: 24px */}
-      <div 
-        className="hero-content relative z-10 flex flex-col px-4 sm:px-6 md:px-8 lg:px-0"
-        style={{
-          width: 'clamp(85%, min(90vw, 876px), 876px)',
-          maxWidth: '876px',
-          height: 'fit-content',
-          top: 'clamp(140px, 20vh, 329px)',
-          left: 'clamp(16px, 4vw, 96px)',
-          gap: 'clamp(16px, 1.8vw, 24px)',
-          position: 'absolute',
-          padding: 0,
-          margin: 0
-        }}
-      >
+      {/* Hero Container - Flexbox layout to prevent overlap */}
+      {/* Using Tailwind responsive classes like the example project */}
+      <div className="flex flex-col lg:flex-row items-start justify-between w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 gap-5 lg:gap-8 xl:gap-12 relative z-10" style={{ marginTop: 'clamp(80px, 12vh, 120px)' }}>
+        {/* Frame 1707481559 - Left Column Text Content */}
+        {/* Figma: Width Fixed 876px, Height Hug 447px, Top: 329px, Left: 96px, Gap: 24px */}
+        <div 
+          className="hero-content-wrapper flex flex-col w-full lg:w-auto"
+          style={{
+            gap: 'clamp(16px, 1.8vw, 24px)',
+            padding: 0,
+            margin: 0
+          }}
+        >
           {/* Text: Professional Contract Intelligence for Modern Buyer's Agent */}
           {/* Figma: 876px × 303px, Poppins 600, 72px, 140% line-height */}
           <h1 
@@ -171,7 +167,7 @@ export default function Hero() {
               height: 'fit-content',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 600,
-              fontSize: 'clamp(28px, 4.5vw, 72px)',
+              fontSize: 'clamp(40px, 5vw, 72px)',
               lineHeight: '140%',
               letterSpacing: '0px',
               color: '#FFFFFF',
@@ -192,7 +188,7 @@ export default function Hero() {
               height: 'fit-content',
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 500,
-              fontSize: 'clamp(16px, 2vw, 24px)',
+              fontSize: 'clamp(18px, 2.2vw, 24px)',
               lineHeight: '150%',
               letterSpacing: '0px',
               color: '#E5E5E5',
@@ -324,31 +320,23 @@ export default function Hero() {
               See How It Works
             </button>
           </div>
-      </div>
+        </div>
 
-      {/* Macbook - Desktop version - Responsive positioning for all laptop sizes */}
-      {/* Figma: Width 1,086.84px, Height 657px, Top 254px, Left 940px */}
-      {/* Responsive for: 11", 12", 13", 14", 15", 16" laptops */}
-      <div 
-        className="macbook-image hidden lg:block absolute z-10"
-        style={{
-          top: 'clamp(180px, 16vh, 254px)',
-          right: 'clamp(20px, 3vw, 96px)',
-          width: 'clamp(400px, min(45vw, 1087px), 1087px)',
-          maxWidth: '1087px',
-          height: 'auto'
-        }}
-      >
-        <img
-          src="/Macbook2 (1).png"
-          alt="MacBook mockup"
-          className="w-full h-auto object-contain"
-          style={{
-            maxHeight: '657px',
-            width: '100%',
-            height: 'auto'
-          }}
-        />
+        {/* Macbook - Desktop version - Responsive positioning for all laptop sizes */}
+        {/* Figma: Width 1,086.84px, Height 657px, Top 254px, Left 940px */}
+        {/* Responsive for: 11", 12", 13", 14", 15", 16" laptops */}
+        {/* Using Tailwind responsive classes - Figma properties as max values */}
+        <div className="macbook-wrapper hidden lg:flex items-center justify-center">
+          <img
+            src="/Macbook2 (1).png"
+            alt="MacBook mockup"
+            className="object-contain w-full h-auto"
+            style={{
+              height: 'auto',
+              width: '100%'
+            }}
+          />
+        </div>
       </div>
 
       {/* Macbook - Tablet version - Visible on tablet */}
