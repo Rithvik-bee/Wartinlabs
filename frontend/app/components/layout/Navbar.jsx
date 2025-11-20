@@ -52,7 +52,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="relative">
+    <nav className="relative z-50">
       {/* Frame 1707481561 - Full Navbar Container */}
       {/* Figma: Width Fixed 1853px, Height Hug 105px, Top 48px, Left 48px, Padding Left 48px, Justify space-between */}
       {/* NO BACKGROUND - transparent, only dimensions and spacing */}
@@ -322,7 +322,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="lg:hidden fixed top-[96px] left-0 right-0 bg-black/90 backdrop-blur-md rounded-b-2xl border-t border-white/10 z-40 mx-4">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md rounded-b-2xl border-t border-white/10 z-[60] mt-2 w-full shadow-2xl">
           <ul className="px-6 py-6 space-y-4">
             <li>
               <a href="#pricing" onClick={() => setIsOpen(false)} className="block text-white/90 hover:text-white text-base">
