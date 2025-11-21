@@ -80,7 +80,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12 relative">
+    <div className="h-screen bg-gray-50 flex items-center justify-center px-4 py-4 sm:py-6 md:py-8 relative overflow-y-auto">
       <style dangerouslySetInnerHTML={{__html: `
         /* Form-specific styles - isolated from global CSS */
         .register-form {
@@ -172,25 +172,25 @@ export default function RegisterPage() {
         </svg>
         Back
       </Link>
-      <div className="w-full max-w-md" style={{ minWidth: 0 }}>
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div className="mb-8 text-center">
-            <div className="flex flex-col items-center justify-center mb-4">
+      <div className="w-full max-w-md my-auto" style={{ minWidth: 0 }}>
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+          <div className="mb-4 sm:mb-6 md:mb-8 text-center">
+            <div className="flex flex-col items-center justify-center mb-2 sm:mb-3 md:mb-4">
               <img 
                 src="https://i0.wp.com/wartinlabs.com/wp-content/uploads/2022/02/WARTIN-LAB-AI-2-2.png?fit=117%2C87&ssl=1" 
                 alt="WartinLabs Logo" 
-                className="h-12 w-auto mb-2"
+                className="h-8 sm:h-10 md:h-12 w-auto mb-1 sm:mb-2"
               />
-              <p className="text-gray-400 text-sm font-medium tracking-wide">WARTINLABS</p>
+              <p className="text-gray-400 text-xs sm:text-sm font-medium tracking-wide">WARTINLABS</p>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Create Account</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2 text-center">Create Account</h2>
             {/* <p className="text-gray-500 text-center text-sm">Join thousands learning data science</p> */}
           </div>
 
-          <form onSubmit={handleSubmit} className="register-form space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="register-form space-y-3 sm:space-y-4 md:space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-2">First Name</label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">First Name</label>
                 <div className="relative">
                   <svg
                     className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -211,14 +211,14 @@ export default function RegisterPage() {
                     value={formData.firstName}
                     onChange={handleChange}
                     placeholder="John"
-                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                    className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-2">Last Name</label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Last Name</label>
                 <div className="relative">
                   <svg
                     className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -239,7 +239,7 @@ export default function RegisterPage() {
                     value={formData.lastName}
                     onChange={handleChange}
                     placeholder="Doe"
-                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                    className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                     required
                   />
                 </div>
@@ -247,7 +247,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">Email Address</label>
+              <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Email Address</label>
               <div className="relative">
                 <svg
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -269,14 +269,14 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   placeholder="you@example.com"
                   autoComplete="email"
-                  className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                  className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">Password</label>
+              <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Password</label>
               <div className="relative">
                 <svg
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -298,7 +298,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   placeholder="Minimum 8 characters"
                   autoComplete="new-password"
-                  className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                  className="w-full pl-10 pr-10 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                   required
                 />
                 <button
@@ -319,8 +319,8 @@ export default function RegisterPage() {
                   )}
                 </button>
               </div>
-              <div className="mt-2 flex items-center gap-2">
-                <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+              <div className="mt-1 sm:mt-2 flex items-center gap-2">
+                <div className="flex-1 h-1 sm:h-1.5 bg-gray-200 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full ${
                       formData.password.length === 0
@@ -338,7 +338,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-2">Confirm Password</label>
+              <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Confirm Password</label>
               <div className="relative">
                 <svg
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -360,7 +360,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   placeholder="Re-enter password"
                   autoComplete="new-password"
-                  className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                  className="w-full pl-10 pr-10 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                   required
                 />
                 <button
@@ -383,16 +383,16 @@ export default function RegisterPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3 pt-2">
+            <div className="flex items-start gap-2 sm:gap-3 pt-1 sm:pt-2">
               <input
                 type="checkbox"
                 name="agreeToTerms"
                 checked={formData.agreeToTerms}
                 onChange={handleChange}
-                className="w-5 h-5 mt-0.5 accent-red-500 rounded border-gray-300 cursor-pointer"
+                className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 accent-red-500 rounded border-gray-300 cursor-pointer flex-shrink-0"
                 required
               />
-              <label className="text-sm text-gray-600 cursor-pointer flex-1">
+              <label className="text-xs sm:text-sm text-gray-600 cursor-pointer flex-1">
                 I agree to the{" "}
                 <a href="#" className="text-red-600 font-semibold hover:underline">
                   Terms of Service
@@ -405,15 +405,15 @@ export default function RegisterPage() {
             </div>
 
             {error && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="mt-2 sm:mt-3 md:mt-4 p-2 sm:p-3 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-xs sm:text-sm text-red-600">{error}</p>
               </div>
             )}
 
             <button
               type="submit"
               disabled={!formData.agreeToTerms || formData.password !== formData.confirmPassword || loading}
-              className="w-full mt-6 bg-red-500 hover:bg-red-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full mt-4 sm:mt-5 md:mt-6 bg-red-500 hover:bg-red-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-2 sm:py-2.5 md:py-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               {loading ? (
                 <>
@@ -434,8 +434,8 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-gray-100 text-center">
-            <p className="text-gray-600 text-sm">
+          <div className="mt-4 sm:mt-5 md:mt-6 pt-4 sm:pt-5 md:pt-6 border-t border-gray-100 text-center">
+            <p className="text-gray-600 text-xs sm:text-sm">
               Already have an account?{" "}
               <Link
                 href="/login"
@@ -447,7 +447,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        <p className="text-center text-xs text-gray-500 mt-6">© 2025 WartinLabs. All rights reserved.</p>
+        <p className="text-center text-xs text-gray-500 mt-4 sm:mt-5 md:mt-6">© 2025 WartinLabs. All rights reserved.</p>
       </div>
     </div>
   )

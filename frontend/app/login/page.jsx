@@ -60,7 +60,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12 relative">
+    <div className="h-screen bg-gray-50 flex items-center justify-center px-4 py-4 sm:py-6 md:py-8 relative overflow-y-auto">
       <style dangerouslySetInnerHTML={{__html: `
         /* Form-specific styles - isolated from global CSS */
         .login-form {
@@ -95,22 +95,22 @@ export default function LoginPage() {
         </svg>
         Back
       </Link>
-      <div className="w-full max-w-md" style={{ minWidth: 0 }}>
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div className="mb-8 text-center">
-            <div className="flex flex-col items-center justify-center mb-4">
+      <div className="w-full max-w-md my-auto" style={{ minWidth: 0 }}>
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+          <div className="mb-4 sm:mb-6 md:mb-8 text-center">
+            <div className="flex flex-col items-center justify-center mb-2 sm:mb-3 md:mb-4">
               <img 
                 src="https://i0.wp.com/wartinlabs.com/wp-content/uploads/2022/02/WARTIN-LAB-AI-2-2.png?fit=117%2C87&ssl=1" 
                 alt="WartinLabs Logo" 
-                className="h-12 w-auto mb-2"
+                className="h-8 sm:h-10 md:h-12 w-auto mb-1 sm:mb-2"
               />
-              <p className="text-gray-400 text-sm font-medium tracking-wide">WARTINLABS</p>
+              <p className="text-gray-400 text-xs sm:text-sm font-medium tracking-wide">WARTINLABS</p>
             </div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-2 text-center">Welcome back!</h2>
-            <p className="text-gray-500 mb-8 text-center">Login to continue </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-1 sm:mb-2 text-center">Welcome back!</h2>
+            <p className="text-gray-500 text-sm sm:text-base mb-4 sm:mb-6 md:mb-8 text-center">Login to continue </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="login-form space-y-6">
+          <form onSubmit={handleSubmit} className="login-form space-y-4 sm:space-y-5 md:space-y-6">
             <div className="relative">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export default function LoginPage() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-12 pr-4 py-2 sm:py-2.5 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                 required
               />
             </div>
@@ -140,21 +140,21 @@ export default function LoginPage() {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="Enter your password"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-12 pr-4 py-2 sm:py-2.5 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                 required
               />
             </div>
 
             {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="p-2 sm:p-3 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-xs sm:text-sm text-red-600">{error}</p>
               </div>
             )}
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 disabled:cursor-not-allowed text-white font-semibold py-2 sm:py-2.5 md:py-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               {loading ? (
                 <>
@@ -170,9 +170,9 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <span className="text-gray-600">New Register? </span>
-            <Link href="/register" className="text-purple-600 font-semibold hover:underline">
+          <div className="mt-4 sm:mt-5 md:mt-6 text-center">
+            <span className="text-gray-600 text-sm sm:text-base">New Register? </span>
+            <Link href="/register" className="text-purple-600 font-semibold hover:underline text-sm sm:text-base">
               Create Account
             </Link>
           </div>

@@ -582,11 +582,11 @@ export default function Hero() {
           }}
         >
           <div 
-            className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto" 
+            className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[95vh] overflow-y-auto" 
             style={{ 
               minWidth: 0,
               margin: 'auto',
-              maxHeight: 'calc(100vh - 2rem)'
+              maxHeight: 'calc(100vh - 1rem)'
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -608,7 +608,7 @@ export default function Hero() {
               }
               
               .contact-form textarea {
-                min-height: 100px;
+                min-height: 80px;
                 resize: vertical;
               }
               
@@ -635,12 +635,12 @@ export default function Hero() {
                 display: grid;
               }
             `}} />
-            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between rounded-t-2xl">
               <div className="flex flex-col items-center justify-center">
                 <img 
                   src="https://i0.wp.com/wartinlabs.com/wp-content/uploads/2022/02/WARTIN-LAB-AI-2-2.png?fit=117%2C87&ssl=1" 
                   alt="WartinLabs Logo" 
-                  className="h-10 w-auto mb-1"
+                  className="h-8 sm:h-10 w-auto mb-0.5 sm:mb-1"
                 />
                 <p className="text-gray-400 text-xs font-medium tracking-wide">WARTINLABS</p>
               </div>
@@ -654,28 +654,28 @@ export default function Hero() {
               </button>
             </div>
 
-            <div className="p-6 md:p-8">
-              <div className="mb-6 text-center">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Get in Touch</h2>
-                <p className="text-gray-500 text-sm">We'd love to hear from you</p>
+            <div className="p-4 sm:p-5 md:p-6 lg:p-8">
+              <div className="mb-4 sm:mb-5 md:mb-6 text-center">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Get in Touch</h2>
+                <p className="text-gray-500 text-xs sm:text-sm">We'd love to hear from you</p>
               </div>
 
               {success && (
-                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-sm text-green-600">Thank you! Your message has been sent successfully.</p>
+                <div className="mb-4 sm:mb-5 md:mb-6 p-3 sm:p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="text-xs sm:text-sm text-green-600">Thank you! Your message has been sent successfully.</p>
                 </div>
               )}
 
               {error && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                  <p className="text-sm text-red-600">{error}</p>
+                <div className="mb-4 sm:mb-5 md:mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-xs sm:text-sm text-red-600">{error}</p>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="contact-form space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="contact-form space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">
                       First Name <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -698,14 +698,14 @@ export default function Hero() {
                         value={formData.firstName}
                         onChange={handleChange}
                         placeholder="John"
-                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                        className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                         required
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">
                       Last Name <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -728,16 +728,16 @@ export default function Hero() {
                         value={formData.lastName}
                         onChange={handleChange}
                         placeholder="Doe"
-                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                        className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                         required
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">
                       Email <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -760,14 +760,14 @@ export default function Hero() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@example.com"
-                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                        className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                         required
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-2">Phone</label>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">Phone</label>
                     <div className="relative">
                       <svg
                         className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -788,14 +788,14 @@ export default function Hero() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+1 (555) 000-0000"
-                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white"
+                        className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white text-sm sm:text-base"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">
                     Purpose <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -816,7 +816,7 @@ export default function Hero() {
                       name="purpose"
                       value={formData.purpose}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white appearance-none"
+                      className="w-full pl-10 pr-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white appearance-none text-sm sm:text-base"
                       required
                     >
                       <option value="">Select a purpose</option>
@@ -840,7 +840,7 @@ export default function Hero() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 mb-1 sm:mb-2">
                     Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -848,8 +848,8 @@ export default function Hero() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your inquiry..."
-                    rows={6}
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white resize-none"
+                    rows={4}
+                    className="w-full px-4 py-2 sm:py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent focus:bg-white resize-none text-sm sm:text-base"
                     required
                   />
                 </div>
@@ -857,7 +857,7 @@ export default function Hero() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-6 bg-red-500 hover:bg-red-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                  className="w-full mt-4 sm:mt-5 md:mt-6 bg-red-500 hover:bg-red-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-2 sm:py-2.5 md:py-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
                   {loading ? (
                     <>
