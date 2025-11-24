@@ -31,21 +31,23 @@ export const createLead = async (req, res) => {
 
     await newLead.save();
 
-    try {
-      await sendLeadNotificationEmail({
-        firstName: newLead.firstName,
-        lastName: newLead.lastName,
-        email: newLead.email,
-        phone: newLead.phone,
-        purpose: newLead.purpose,
-        message: newLead.message,
-        createdAt: newLead.createdAt
-      });
+    // Send email notification asynchronously (non-blocking)
+    // Don't wait for email to complete before sending response
+    sendLeadNotificationEmail({
+      firstName: newLead.firstName,
+      lastName: newLead.lastName,
+      email: newLead.email,
+      phone: newLead.phone,
+      purpose: newLead.purpose,
+      message: newLead.message,
+      createdAt: newLead.createdAt
+    }).then(() => {
       console.log('Email notification sent successfully');
-    } catch (emailError) {
+    }).catch((emailError) => {
       console.error('Failed to send email notification:', emailError);
-    }
+    });
 
+    // Send response immediately after saving to database
     res.status(201).json({
       success: true,
       message: 'Lead created successfully',

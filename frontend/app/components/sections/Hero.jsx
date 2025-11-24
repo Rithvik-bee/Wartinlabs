@@ -64,6 +64,10 @@ export default function Hero() {
     }
 
     try {
+      // Add timeout to prevent hanging
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5001'}/api/leads`, {
         method: 'POST',
         headers: {
@@ -77,8 +81,10 @@ export default function Hero() {
           purpose: formData.purpose,
           message: formData.message,
         }),
+        signal: controller.signal,
       });
 
+      clearTimeout(timeoutId);
       const data = await response.json();
 
       if (!response.ok) {
@@ -105,7 +111,11 @@ export default function Hero() {
         throw new Error(data.message || 'Failed to submit form');
       }
     } catch (err) {
-      setError(err.message || "Something went wrong. Please try again.");
+      if (err.name === 'AbortError') {
+        setError("Request timed out. Please check your connection and try again.");
+      } else {
+        setError(err.message || "Something went wrong. Please try again.");
+      }
       setLoading(false);
     }
   };
