@@ -87,6 +87,7 @@ export default function Hero() {
 
       if (data.success) {
         setSuccess(true);
+        setLoading(false); // Stop loading immediately
         setFormData({
           firstName: "",
           lastName: "",
@@ -95,16 +96,16 @@ export default function Hero() {
           purpose: "",
           message: "",
         });
+        // Close modal after showing success message for 1.5 seconds
         setTimeout(() => {
           setSuccess(false);
           setIsModalOpen(false);
-        }, 2000);
+        }, 1500);
       } else {
         throw new Error(data.message || 'Failed to submit form');
       }
     } catch (err) {
       setError(err.message || "Something went wrong. Please try again.");
-    } finally {
       setLoading(false);
     }
   };
